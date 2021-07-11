@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond $1 !^(index\.php|images|uploads|assets|robots\.txt)
+RewriteRule ^(.*)$ /tsearch/index.php/$1 [L]
