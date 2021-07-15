@@ -1,69 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Prozim - Find a Professional and Book a Consultation by Appointment, Chat or Video call">
-    <meta name="author" content="Ansonika">
-    <title>Prozim - 専門家を探す</title>
-
-    <!-- Favicons-->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
-
-    <!-- BASE CSS -->
-    <link href="<?=asset_url()?>css/bootstrap_customized.min.css" rel="stylesheet">
-    <link href="<?=asset_url()?>css/style.css" rel="stylesheet">
-    <link href="<?=asset_url()?>css/toastr.min.css" rel="stylesheet">
 
     <!-- SPECIFIC CSS -->
     <link href="<?=asset_url()?>css/home.css" rel="stylesheet">
     <link href="<?=asset_url()?>css/account.css" rel="stylesheet">
-
-    <!-- YOUR CUSTOM CSS -->
-    <link href="<?=asset_url()?>css/custom.css" rel="stylesheet">
-
-</head>
 <body>
-    <header class="header clearfix element_to_stick">
-        <div class="container-fluid">
-        <div id="logo">
-            <a href="index.html">
-                <img src="<?=asset_url()?>img/logo.svg" width="140" height="35" alt="" class="logo_normal">
-                <img src="<?=asset_url()?>img/logo_sticky.svg" width="120" height="35" alt="" class="logo_sticky">
-            </a>
-        </div>
-        <?php print_r($user); if($user) { ?>
-            <ul id="top_menu">
-                <?php if($user["type"] == 2) { ?>
-                    <li><a href="<?=base_url()?>talents/edit" class="btn_access">編集スキル</a></li>
-                <?php } else{ ?> 
-                    <li><a href="<?=base_url()?>welcome/login" class="btn_access">管理者</a></li>
-                <?php } ?>
-                <li><a href="<?=base_url()?>welcome/signout" class="btn_access red">ログアウト</a></li>
-            </ul>
-        ?>
-            
-        <?php }else { ?>
-            <ul id="top_menu">
-                <li><a class="btn_access btn" name="signin">ログイン</a></li>
-                <li><a href="<?=base_url()?>register" class="btn_access green" name="signup">会員登録</a></li>
-            </ul>
-        <?php } ?>
-        
-        <!-- /top_menu -->
-        <!-- <a href="#0" class="open_close">
-            <i class="icon_menu"></i><span>Menu</span>
-        </a> -->
-    </div>
-    </header>
-    <!-- /header -->
-    
     <main>
         <div id="carousel-home">
             <div class="owl-carousel owl-theme">            
@@ -133,19 +72,19 @@
                     <h2>人気のある専門家</h2>
                     <p>彼らが教育を受けた市民になると、資金調達は抑止されます。</p>
                 </div>
-                <div class="">
-                    <form method="post" action="grid-listing-1.html">
+                <!-- <div class=""> -->
+                    <form method="post" id="search" action="<?=base_url()?>talents/search" method="post">
                         <div class="row no-gutters custom-search-input">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="専門家を探す...">
+                                    <input class="form-control" type="text" name="query[keyword]" placeholder="専門家を探す...">
                                 </div>
                             </div>
                         </div>
                     </form>
-                </div>
+                <!-- </div> -->
                 <!-- /row -->
-                <p class="text-center add_top_30"><a href="grid-listing-1.html" class="btn_1 medium">検索を開始します</a></p>
+                <p class="text-center add_top_30"><a name="search" class="btn_1 medium">検索を開始します</a></p>
             </div>
             <!-- /container -->
         </div>
@@ -289,10 +228,6 @@
         <!--/call_section-->
 
     </main>
-    <!-- /main -->
-
- 
-    <!--/footer-->
 
     <div id="toTop"></div><!-- Back to top button -->
     
@@ -308,7 +243,6 @@
                 </div>
                 <div class="modal-body">
                     <form id="login_form">
-                        <div class="divider"><span>Or</span></div>
                         <div class="form-group">
                             <input type="email" class="form-control" name="email" id="email" placeholder="メールアドレス">
                         </div>
@@ -316,7 +250,6 @@
                             <input type="password" class="form-control" name="password" id="password" value="" placeholder="パスワード">
                         </div>
                         <a name="login" class="btn_1 full-width">ログイン Prozim</a>
-                        <div class="text-center add_top_10">新着 Prozim? <strong><a >会員登録!</a></strong></div>
                     </form>
                 </div>
             </div>
@@ -333,26 +266,25 @@
                 </div>
                 <div class="modal-body">
                     <form id="signup_form">
-                        <div class="divider"><span>Or</span></div>
+                        <div class="form-group">
+                            <input type="hidden" name="type" value="1">
+                            <input type="email" class="form-control" name="name" id="name" placeholder="お名前">
+                        </div>
                         <div class="form-group">
                             <input type="email" class="form-control" name="email" id="email" placeholder="メールアドレス">
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" name="password" id="password" value="" placeholder="パスワード">
                         </div>
-                        <a name="save" class="btn_1 full-width">ログイン Prozim</a>
-                        <div class="text-center add_top_10">新着 Prozim? <strong><a >会員登録!</a></strong></div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="cf_password" id="cf_password" value="" placeholder="パスワードを認証する">
+                        </div>
+                        <a name="save" class="btn_1 full-width">登 録</a>
                     </form>
                 </div>
             </div>
         </div>
     </div>
     <!-- COMMON SCRIPTS -->
-    <script src="<?=asset_url()?>js/common_scripts.min.js"></script>
-    <script src="<?=asset_url()?>js/slider.js"></script>
-    <script src="<?=asset_url()?>js/common_func.js"></script>
-    <script src="<?=asset_url()?>assets/validate.js"></script>
-    <script src="<?=asset_url()?>js/toastr.min.js"></script>
+
     <script src="<?=asset_url()?>scripts/index.js"></script>
-</body>
-</html>

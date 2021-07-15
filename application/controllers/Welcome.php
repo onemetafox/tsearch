@@ -32,6 +32,19 @@ class Welcome extends BaseController {
 		$this->render("public/index", $data);
 		
 	}
+	public function signup(){
+		$data = $this->input->post();
+		unset($data["cf_password"]);
+		$user = $this->user->getOneByParam(array("email"=> $data["email"]));
+		$data["password"] = sha1($data["password"]);
+		if(!$user){
+			$data["created_at"] = date("Y-m-d");
+			$this->user->setData($data);
+			$this->json(array("success" => true, "msg" => "アカウントが作成されました"));
+		}else{
+			$this->json(array("success" => false, "msg"=>"あなたのアカウントは存在します"));
+		}
+	}
 	public function signin(){
 		$data = $this->input->post();
 		$user = $this->user->getOneByParam(array("email"=> $data["email"]));

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Prozim - Find a Professional and Book a Consultation by Appointment, Chat or Video call">
     <meta name="author" content="Ansonika">
-    <title>Prozim - Find a Professional and Book a Consultation by Appointment, Chat or Video call</title>
+    <title>Prozim - 専門家を探す</title>
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -19,13 +19,16 @@
     <!-- BASE CSS -->
     <link href="<?=asset_url()?>css/bootstrap_customized.min.css" rel="stylesheet">
     <link href="<?=asset_url()?>css/style.css" rel="stylesheet">
-
+    <link href="<?=asset_url()?>css/toastr.min.css" rel="stylesheet">
+    <script src="<?=asset_url()?>js/jquery.js"></script>
     <!-- SPECIFIC CSS -->
     <link href="<?=asset_url()?>css/listing.css" rel="stylesheet">
 
-    <!-- YOUR CUSTOM CSS -->
-    <link href="<?=asset_url()?>css/custom.css" rel="stylesheet">
 
+
+
+        <!-- COMMON SCRIPTS -->
+    
 </head>
 <?php
     if (isset($header))
@@ -42,4 +45,9 @@
         echo $footer;
     }
 ?>
-<script>var HOST_URL = "<?=base_url()?>";</script>
+<script type="text/javascript"> var HOST_URL = "<?= base_url()?>"</script>
+<script src="<?=asset_url()?>js/common_scripts.min.js"></script>
+<script src="<?=asset_url()?>js/slider.js"></script>
+<script src="<?=asset_url()?>js/common_func.js"></script>
+<script src="<?=asset_url()?>assets/validate.js"></script>
+<script src="<?=asset_url()?>js/toastr.min.js"></script>

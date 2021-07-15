@@ -11,77 +11,34 @@ class User extends AdminController {
 		$this->load->model("User_model", "model");
 	}
 
-
-	public function save(){
-		$data = $this->input->post();
-		if(isset($data["customer"]) && ($data["customer"]  == "on")){
-			$data["customer"] = 2;
-		}else{
-			$data["customer"] = 1;
-		}
-		$admin = $this->user_data();
-		$data["admin_id"] = $admin["id"];
-		if($data["id"]){
-			$this->model->updateData($data);
-			$this->json(array("success"=> true, "id"=>$data["id"]));
-		}else{
-			$data["created_at"] = date("Y-m-d H:s:i");
-			$id = $this->model->setData($data);
-			$this->json(array("success"=>true, "id"=>$id));
-		}
+	public function index(){
+		$data["page_title"] = "管理者";
+		$this->render("admin/user",$data);
 	}
-
 	// delete image pair
-	public function delete($id){
-		$this->recipe->unsetDataById($id);
+	public function delete(){
+		$id = $this->input->post("id");
+		$this->user->unsetDataById($id);
 		$this->json(array("success"=>true, "msg"=>"削除されました!"));
 	}
-
-	public function confirm(){
-		$filter = $this->input->post();
-		$admin = $this->admin->getOneByParam(array("user_id"=>$filter["admin_id"]));
-		if($admin){
-			if(sha1($filter["password"])== $admin["password"]){
-				/// update status
-
-				if($filter["confirm"] == "save") {
-					$this->user->updateData(array("status"=>2, "id"=>$filter["id"]));
-					$this->product->updateDataByParam(array("status"=>2), array("admin_id"=>$admin["id"], "user_id"=>$filter["id"]));
-					$this->family->updateDataByParam(array("status"=>2), array("admin_id"=>$admin["id"], "user_id"=>$filter["id"]));
-					$this->detail->updateDataByParam(array("status"=>2), array("admin_id"=>$admin["id"], "user_id"=>$filter["id"]));
-				}else{
-					$this->user->unsetDataById($filter["id"]);
-					$this->product->deleteByParam(array("user_id"=>$filter["id"], "admin_id"=>$admin["id"]));
-					$this->family->deleteByParam(array("user_id"=>$filter["id"], "admin_id"=>$admin["id"]));
-					$this->detail->deleteByParam(array("user_id"=>$filter["id"], "admin_id"=>$admin["id"]));
-				}
-				$this->json(array("success"=>true, "msg"=>"正確に保管されてい"));
-			}else{
-				$this->json(array("success"=>false, "msg"=>"passwordが正しくありません"));
-			}
+	public function save(){
+		$data = $this->input->post();
+		unset($data["cf_password"]);
+		$data["password"] = sha1($data["password"]);
+		if($data["id"]){
+			$this->model->updateData($data);
 		}else{
-			$this->json(array("success"=>false, "msg"=>"IDが正しくありません"));
+			$data["created_at"] = date("Y-m-d");
+			$this->model->setData($data);
 		}
+		$this->json(array("success"=>true, "msg"=>"成 功!"));
 	}
 
 	public function api(){
 		$filter = $this->input->post("query");
-		$params = explode(" ", $filter["q"]);
 		$data["meta"] = $filter;
-		$data["data"] = $this->model->all($params);
+		$data["data"] = $this->user->getDataByParam($filter);
 		$this->json($data);
 	}
 
-	public function search(){
-		$filter["query"] = $this->input->get("q");
-		$params = explode(" ", $filter["query"]);
-		$data["users"] = $this->model->all($params);
-		$data["filter"] = $filter["query"];
-		$this->render("admin/search",$data);
-	}
-	public function view(){
-		$data["page_title"] = "View Page";
-		$data["filter"] = $this->input->post();
-		$this->render("admin/view", $data);
-	}
 }

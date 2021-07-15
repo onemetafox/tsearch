@@ -6,11 +6,12 @@
 	class AdminController extends BaseController
 	{
         var $layout = "admin";
+        
 		public function __construct() {
 			parent::__construct();
-			// $admin = $this->user_data();
-			// if(!$admin){
-			// 	redirect("/");
-			// }
+			$admin = $this->user_data();
+			if($admin["type"] != "2"){
+				redirect("/");
+			}
 		}
 	}

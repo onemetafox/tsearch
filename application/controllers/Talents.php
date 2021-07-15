@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require_once(APPPATH.'core/PublicController.php');
 
-class Welcome extends Public {
+class Talents extends PublicController {
 	
 	public function __construct(){
 		parent::__construct();
@@ -24,43 +24,96 @@ class Welcome extends Public {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
+	public function edit(){
 		$user = $this->user_data();
-		$data["user"] = $user;
-		$this->load->view("public/index", $data);
-		
-	}	
-	public edit(){
-		$user = $this->user_data();
-		if(!$user)
+		if(!$user){
 			redirect("/");
-		$this->load->view("")
-	}
-	public function signin(){
-		$data = $this->input->post();
-		$user = $this->admin->getOneByParam(array("user_id"=> $data["id"]));
-		if($user){
-			if($user["password"] == sha1($data["password"])){
-				$user["last_activity"] = date("y-m-d h:s:i");
-				$user["logged_status"] = 2;
-				$this->session->set_userdata("user",$user);
-				$this->admin->updateData($user);
-				$this->json(array("success" => true, "msg" => "成功ログイン", "user" => $user));
-			}else{
-				$this->json(array("success" => false, "msg"=>"Password 間違った"));
-			}	
-		}else{
-			$this->json(array("success" => false, "msg"=>"User ID 間違った"));
 		}
-		
+		$data["user"] = $user;
+		$data["talent"] = $this->talent->getOneByParam(array("user_id"=>$user["id"]));
+		$this->load->view("public/edit",$data);
 	}
+	public function save(){
+		$data = $this->input->post();
+		$user = $this->user_data();
+		$data["user_id"] = $user["id"];
+		unset($data["profile_avatar_remove"]);
+		$context["json"] = json_encode($data);
+		$temp = "";
+		foreach($data as $key => $item){
+			 $temp = $temp . " " . $item;
+		}
+		$context["content"] = $temp;
 
-	public function signout(){
-		$user = $this->session->userdata("user");
-		$user["logged_status"] = "1";
-		$this->admin->updateData($user);
-	 	$this->session->unset_userdata('user');
-		redirect("/");
+		if($data["id"]){
+			$data["created_at"] = date("Y-m-d");
+			$this->talent->updateData($data);
+			$id = $data["id"];
+			$context["id"] = $id;
+			$this->context->updateData($context);
+
+		}else {
+			$id = $this->talent->setData($data);
+			$this->context->setData($context);
+		}
+		if(isset($_FILES["file"])){
+			if ( 0 < $_FILES['file']['error'] ) {
+				echo 'Error: ' . $_FILES['file']['error'] . '<br>';
+			}
+			else {
+				$name = $_FILES["file"]["name"];
+				$ext = pathinfo($name, PATHINFO_EXTENSION);
+				// print_r($_FILES["file".$i]['tmp_name']);
+				move_uploaded_file($_FILES["file"]['tmp_name'], 'uploads/' . $id . "." . $ext);
+			}
+			$this->talent->updateData(array("id"=>$id, "image"=>$id . "." . $ext));
+			$data["image"] = $id . "." . $ext;
+		}
+		$this->json(array("success"=>true, "msg"=>"成 功!", "id"=>$id));
+	}
+	public function search(){
+		$this->load->library("pagination");
+
+		$filter = $this->input->post();
+		if(!isset($filter["pagination"])){
+			$pagination["perpage"] = 10;
+			$pagination["page"] = 1;
+		}else{
+			$pagination = $filter["pagination"];
+		}
+
+		$limit["start"] = ($pagination["page"]-1) * $pagination["perpage"];
+		$limit["end"] = $pagination["perpage"];
+		
+		$data["talents"] = $this->talent->search($filter["query"],$limit);
+		if(!isset($filter["query"])){
+			$pagination["total"] = $this->talent->count();
+		}else{
+			$pagination["total"] = $this->talent->count($filter["query"]);
+		}
+		if( $pagination["total"] % $pagination["perpage"] == 0 ){
+			$pagination["total_page"] = (int)$pagination["total"]/$pagination["perpage"];
+		}else{
+			$pagination["total_page"] = (int)$pagination["total"]/$pagination["perpage"] +1;
+		}
+		$pagination["pages"] = ceil($pagination["total"]/$pagination["perpage"]);
+		if(($pagination["page"] % 5) == 0 ){
+			$pagination["start_page"] = ((int)$pagination["page"]/5-1) * 5 +1;
+		}else{
+			$pagination["start_page"] = ((int)($pagination["page"]/5)) * 5 +1;
+			// $pagination["start_page"] = ($pagination["page"]/5 + 1) * 5;
+		}
+		$pagination["end_page"]	= $pagination["start_page"] + 5;
+		
+		$data["filter"] = $filter["query"];
+		$data["pagination"] = $pagination;
+		// print_r($data);
+		// $config["base_url"] = base_url() . "public/search";
+		// $config["total_row"] = $pagination["total"];
+		// $config["per_page"] = $pagination["per_page"];
+		// $this->pagination->initialize($config);
+		$data["user"] = $this->user_data();
+		
+		$this->load->view("public/search", $data);
 	}
 }
