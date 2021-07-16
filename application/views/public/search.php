@@ -65,7 +65,8 @@
 		    <div class="container clearfix" style="padding-bottom: 15px;">
 		        <a href="javascript:showSearch()"  class="btn_filters"><i class="icon_adjust-vert"></i><span>Filters</span></a>
 		        <div class="search_bar_list">
-				    <input type="text" class="form-control" placeholder="もう一度検索...">
+				    <input id='keyword' type="text" class="form-control" placeholder="もう一度検索..."
+				    value='<?=$query["keyword"]?>'>
 				</div>
 				<a class="btn_search_mobile btn_filters" data-toggle="collapse" href="#collapseSearch"><i class="icon_search"></i></a>
 		    </div>
@@ -77,13 +78,14 @@
 			</div>
 		</div>
 		<div class="card-footer collapse">
-            <form method="post" id="kt_search_form">
+            <form method="post" action="<?=base_url()?>talents/search" id="kt_search_form">
                 <div class="form-group row">
-                	<input type="hidden" name="page">
+                	<input type="hidden" id="form_page" name="query[pagination]">
+                	<input type="hidden" id="form_keyword" name="query[keyword]">
                     <div class="col-lg-5 col-md-12 col-sm-12 input-group">
                         <label class="col-form-label text-right col-lg-3 col-md-3 col-sm-12">購入品</label>
                         <div class="col-lg-9 col-md-9 col-sm-12">
-                            <input type="text" class="form-control form-control-solid" name="name" id="name"  required>
+                            <input type="text" class="form-control form-control-solid" name="name"  required>
                             <div class="fv-plugins-message-container"></div>
                         </div>
                     </div>
@@ -326,7 +328,7 @@
 										<i class="ki ki-bold-arrow-back icon-xs"></i>
 									</a>
 									<?php for($i = $pagination["start_page"]; $i < $pagination["end_page"] ; $i ++) { ?>
-										<a href="#" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1 <?=$i == $pagination["page"]? 'active': ''?>"><?= $i?></a>
+										<a href="javascript:goPage('<?=$i ?>')" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1 <?=$i == $pagination["page"]? 'active': ''?>"><?= $i?></a>
 									<?php } ?>
 									<a href="javascript:goPage('<?= $pagination["page"]+1?>')" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
 										<i class="ki ki-bold-arrow-next icon-xs"></i>

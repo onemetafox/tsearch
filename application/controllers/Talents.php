@@ -71,6 +71,7 @@ class Talents extends PublicController {
 		}
 		$this->json(array("success"=>true, "msg"=>"成 功!", "id"=>$id));
 	}
+	////////////////////  //////////////////////////////////////////////////////
 	public function search(){
 		$this->load->library("pagination");
 
@@ -84,6 +85,13 @@ class Talents extends PublicController {
 
 		$limit["start"] = ($pagination["page"]-1) * $pagination["perpage"];
 		$limit["end"] = $pagination["perpage"];
+
+		///////////////////////////////////////////////////
+		print_r($pagination["page"]);
+		print_r($pagination["perpage"]);
+		print_r($limit);
+		print_r($filter);
+		///////////////////////////////////////////////
 		
 		$data["talents"] = $this->talent->search($filter["query"],$limit);
 		if(!isset($filter["query"])){
@@ -104,8 +112,7 @@ class Talents extends PublicController {
 			// $pagination["start_page"] = ($pagination["page"]/5 + 1) * 5;
 		}
 		$pagination["end_page"]	= $pagination["start_page"] + 5;
-		
-		$data["filter"] = $filter["query"];
+		$data["query"] = $filter["query"];
 		$data["pagination"] = $pagination;
 		// print_r($data);
 		// $config["base_url"] = base_url() . "public/search";

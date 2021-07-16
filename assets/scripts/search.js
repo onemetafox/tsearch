@@ -66,6 +66,12 @@ var indexPage = function() {
 
 jQuery(document).ready(function() {
     indexPage.init();
+    $('#keyword').keypress(function(ev) {
+        if (ev.keyCode === 13) {
+            $('#form_keyword').val(!ev.target.value ? '' : ev.target.value);
+            $('#kt_search_form').submit();
+        }
+    });
 });
 
 /******/ })()
@@ -82,5 +88,7 @@ function showSearch(){
     }
 }
 function goPage(page){
-
+    $('#form_page').val(page);
+    $('#form_keyword').val($('#keyword').val());
+    $('#kt_search_form').submit();
 }
