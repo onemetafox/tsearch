@@ -11,9 +11,6 @@ var indexPage = function() {
         $("a[name=signup]").on("click", function(){
             $("#signup_modal").modal('show');
         });
-        $("a[name=search]").on('click', function(){
-            $("#search").submit();
-        });
         $("a[name=save]").on('click', function(event){
             var loginData = new FormData($("#signup_form")[0]);
             if(loginData.password != loginData.cf_password){
@@ -78,17 +75,3 @@ jQuery(document).ready(function() {
 ;
 //# sourceMappingURL=data-ajax.js.map
 
-
-function showSearch(){
-    var isVisible = $('.card-footer').is( ":visible" );
-    if(isVisible){
-        $('.card-footer').collapse('hide');
-    }else{
-        $('.card-footer').collapse('show');
-    }
-}
-function goPage(page){
-    $('#page').val(page);
-    $('#form_keyword').val($('#keyword').val());
-    $('#kt_search_form').submit();
-}

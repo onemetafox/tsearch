@@ -73,25 +73,18 @@ class Talents extends PublicController {
 	}
 	////////////////////  //////////////////////////////////////////////////////
 	public function search(){
-		$this->load->library("pagination");
-
 		$filter = $this->input->post();
+
 		if(!isset($filter["pagination"])){
-			$pagination["perpage"] = 10;
+			
 			$pagination["page"] = 1;
 		}else{
 			$pagination = $filter["pagination"];
 		}
+		$pagination["perpage"] = 10;
 
 		$limit["start"] = ($pagination["page"]-1) * $pagination["perpage"];
 		$limit["end"] = $pagination["perpage"];
-
-		///////////////////////////////////////////////////
-		print_r($pagination["page"]);
-		print_r($pagination["perpage"]);
-		print_r($limit);
-		print_r($filter);
-		///////////////////////////////////////////////
 		
 		$data["talents"] = $this->talent->search($filter["query"],$limit);
 		if(!isset($filter["query"])){
@@ -114,13 +107,16 @@ class Talents extends PublicController {
 		$pagination["end_page"]	= $pagination["start_page"] + 5;
 		$data["query"] = $filter["query"];
 		$data["pagination"] = $pagination;
-		// print_r($data);
-		// $config["base_url"] = base_url() . "public/search";
-		// $config["total_row"] = $pagination["total"];
-		// $config["per_page"] = $pagination["per_page"];
-		// $this->pagination->initialize($config);
+		$config["base_url"] = base_url() . "public/search";
+		$config["total_row"] = $pagination["total"];
+		$config["per_page"] = $pagination["perpage"];
 		$data["user"] = $this->user_data();
 		
 		$this->load->view("public/search", $data);
+	}
+	public function view($id) {
+		$data["user"] = $this->user_data();
+		$data["talent"] = $this->talent->getDataById($id);
+		$this->load->view("public/view", $data);
 	}
 }

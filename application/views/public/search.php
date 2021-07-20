@@ -77,47 +77,131 @@
 			    </div>
 			</div>
 		</div>
-		<div class="card-footer collapse">
+		<div class="card-footer collapse justify-content-center">
             <form method="post" action="<?=base_url()?>talents/search" id="kt_search_form">
-                <div class="form-group row">
-                	<input type="hidden" id="form_page" name="query[pagination]">
-                	<input type="hidden" id="form_keyword" name="query[keyword]">
-                    <div class="col-lg-5 col-md-12 col-sm-12 input-group">
-                        <label class="col-form-label text-right col-lg-3 col-md-3 col-sm-12">購入品</label>
-                        <div class="col-lg-9 col-md-9 col-sm-12">
-                            <input type="text" class="form-control form-control-solid" name="name"  required>
-                            <div class="fv-plugins-message-container"></div>
-                        </div>
+            	<input type="hidden" id="page" name="pagination[page]">
+            	<input type="hidden" id="form_keyword" name="query[keyword]">
+                <div class="form-group justify-content-center row">
+                    <div class="col-lg-2 input-group">
+                        <label class="col-form-label text-right col-lg-3 col-md-3 col-sm-12">男女</label>
+						<div class="col-lg-9">
+							<select class="form-control" id="gender" name="query[gender]">
+								<option value="" ></option>
+								<option value="1" <?=isset($query["gender"]) && $query["gender"] == 1?'selected':''?>>男</option>
+								<option value="2" <?=isset($query["gender"]) && $query["gender"] == 2?'selected':''?>>女</option>
+							</select>
+						</div>
                     </div>
-                    <div class="col-lg-7 col-md-12 col-sm-12 input-group">
-                        <div class="col-lg-6 col-md-6 col-sm-6 input-group">
-                            <label class="col-form-label text-right col-lg-3 col-sm-3">制作中</label>
-                            <div class="col-lg-9 col-sm-3">
-                                <span class="switch switch-icon">
-                                    <label>
-                                        <input type="checkbox" id="making" name="making">
-                                        <span></span>
-                                    </label>
+                    <div class="col-lg-2 input-group">
+                        <label class="col-form-label text-right col-lg-3 col-md-3 col-sm-12">年齢</label>
+						<div class="col-lg-9 input-group">
+                            <input type="text" class="form-control" value="<?=isset($query['age_from'])?$query['age_from']:''?>" name="query[date_from]">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    ～
                                 </span>
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 input-group">
-                            <label class="col-form-label text-right col-lg-3 col-sm-3">お得意様</label>
-                            <div class="col-lg-9 col-sm-3">
-                                <span class="switch switch-icon">
-                                    <label>
-                                        <input type="checkbox" id="customer" name="customer">
-                                        <span></span>
-                                    </label>
-                                </span>
-                            </div>
+                            <input type="text" class="form-control" value="<?=isset($query['age_to'])?$query['age_to']:''?>" name="query[age_to]">
                         </div>
                     </div>
+                    <div class="col-lg-6 input-group">
+                        <div class="d-flex align-items-center flex-wrap">
+							<!--begin: Item-->
+							<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+								<span class="mr-4">
+									<i class="flaticon-youtube icon-3x text-muted font-weight-bold"></i>
+									<div class="d-flex flex-column text-dark-75">
+										<span class="font-weight-bolder font-size-sm">Youtube</span>
+									</div>
+								</span>
+								
+							</div>
+							<!--end: Item-->
+							<!--begin: Item-->
+							<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+								<span class="mr-4">
+									<i class="flaticon-facebook-logo-button icon-3x text-muted font-weight-bold"></i>
+								</span>
+								<div class="d-flex flex-column text-dark-75">
+									<span class="font-weight-bolder font-size-sm">Facebook</span>
+								</div>
+							</div>
+							<!--end: Item-->
+							<!--begin: Item-->
+							<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+								<span class="mr-4">
+									<i class="flaticon-twitter-logo-button icon-3x text-muted font-weight-bold"></i>
+								</span>
+								<div class="d-flex flex-column text-dark-75">
+									<span class="font-weight-bolder font-size-sm">Net</span>
+								</div>
+							</div>
+							<!--end: Item-->
+							<!--begin: Item-->
+							<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+								<span class="mr-4">
+									<i class="flaticon-instagram-logo icon-3x text-muted font-weight-bold"></i>
+								</span>
+								<div class="d-flex flex-column flex-lg-fill"><span class="font-weight-bolder font-size-sm">Instagram</span>
+								</div>
+							</div>
+							<!--end: Item-->
+							<!--begin: Item-->
+							<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+								<span class="mr-4">
+									<i class="flaticon-twitter-logo-button icon-3x text-muted font-weight-bold"></i>
+								</span>
+								<div class="d-flex flex-column">
+									<span class="font-weight-bolder font-size-sm">Twitter</span>
+								</div>
+							</div>
+							<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+								<span class="mr-4">
+									<i class="flaticon-twitter-logo-button icon-3x text-muted font-weight-bold"></i>
+								</span>
+								<div class="d-flex flex-column">
+									<span class="font-weight-bolder font-size-sm">Tiktok</span>
+								</div>
+							</div>
+							<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+								<span class="mr-4">
+									<i class="flaticon-twitter-logo-button icon-3x text-muted font-weight-bold"></i>
+								</span>
+								<div class="d-flex flex-column">
+									<span class="font-weight-bolder font-size-sm">Wear</span>
+								</div>
+							</div>
+						</div>
+                    </div>
+                </div>
+                <div class="form-group justify-content-center row">
+                	<div class="col-lg-3">
+                		<label class="col-form-label text-right col-lg-3 col-md-3 col-sm-12">活動拠点</label>
+                	</div>
+                	<div class="col-lg-9">
+                		
+                	</div>
+                </div>
+                <div class="form-group justify-content-center row">
+                	<div class="col-lg-3">
+                		<label class="col-form-label text-right col-lg-3 col-md-3 col-sm-12">職業</label>
+                	</div>
+                	<div class="col-lg-9">
+                		
+                	</div>
+                </div>
+                 <div class="form-group justify-content-center row">
+                	<div class="col-lg-3">
+                		<label class="col-form-label text-right col-lg-3 col-md-3 col-sm-12">投稿ジャンル</label>
+                	</div>
+                	<div class="col-lg-9">
+                		
+                	</div>
                 </div>
                 <div class="card-footer">
                     <div class="card-toolbar float-right">
                         <button type="button" id="search" class="btn btn-primary font-weight-bolder">
-                            </i>一覧作成</a>
+                            </i>もう一度検索</a>
                         </button>
                     </div>
                 </div>
@@ -183,7 +267,7 @@
 											<!--begin::User-->
 											<div class="mr-3">
 												<!--begin::Name-->
-												<a href="#" class="d-flex align-items-center text-dark text-hover-primary font-size-h5 font-weight-bold mr-3"><?= $item["name"]?>
+												<a href="<?=base_url()?>talents/view/<?=$item["id"]?>" class="d-flex align-items-center text-dark text-hover-primary font-size-h5 font-weight-bold mr-3"><?= $item["name"]?>
 												<i class="flaticon2-correct text-success icon-md ml-2"></i></a>
 												<!--end::Name-->
 												<!--begin::Contacts-->
@@ -324,15 +408,27 @@
 									<a href="javascript:goPage(1)" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
 										<i class="ki ki-bold-double-arrow-back icon-xs"></i>
 									</a>
+									<?php if(($pagination["page"]-1) == 0) {?>
+									<a class="btn btn-icon btn-sm btn-light-default mr-2 my-1">
+										<i class="ki ki-bold-arrow-back icon-xs"></i>
+									</a>
+									<?php }else { ?>
 									<a href="javascript:goPage('<?= $pagination["page"]-1?>')" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
 										<i class="ki ki-bold-arrow-back icon-xs"></i>
 									</a>
+									<?php } ?>
 									<?php for($i = $pagination["start_page"]; $i < $pagination["end_page"] ; $i ++) { ?>
 										<a href="javascript:goPage('<?=$i ?>')" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1 <?=$i == $pagination["page"]? 'active': ''?>"><?= $i?></a>
 									<?php } ?>
+									<?php if(($pagination["page"]+1) > $pagination["total_page"]) {?>
+									<a class="btn btn-icon btn-sm btn-light-default mr-2 my-1">
+										<i class="ki ki-bold-arrow-next icon-xs"></i>
+									</a>
+									<?php }else { ?>
 									<a href="javascript:goPage('<?= $pagination["page"]+1?>')" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
 										<i class="ki ki-bold-arrow-next icon-xs"></i>
 									</a>
+									<?php } ?>
 									<a href="javascript:goPage('<?= $pagination["total_page"]?>')" class="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
 										<i class="ki ki-bold-double-arrow-next icon-xs"></i>
 									</a>
@@ -483,7 +579,7 @@
     <script src="<?=asset_url()?>js/isotope.min.js"></script>
 
     <script src="<?=asset_url()?>scripts/search.js"></script>
-   
+   	<!-- <script src="<?=asset_url()?>scripts/select2.js"></script> -->
 
 
 </body>
