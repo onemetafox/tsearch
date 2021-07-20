@@ -55,6 +55,10 @@ var indexPage = function() {
             });
             event.preventDefault();
         });
+        $("#search").on('click', function(event){
+            $('#form_keyword').val($('#keyword').val());
+            $('#kt_search_form').submit();
+        })
     }
     return {
         // public functions
@@ -91,4 +95,11 @@ function goPage(page){
     $('#page').val(page);
     $('#form_keyword').val($('#keyword').val());
     $('#kt_search_form').submit();
+}
+
+function setMedia(value, el){
+    $(".symbol-label").removeClass("active");
+    $(el).find('.symbol-label').addClass("active");
+    $("#media").val(value);
+
 }

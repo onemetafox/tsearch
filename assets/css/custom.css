@@ -443,11 +443,12 @@ input, button, select, optgroup, textarea {
     background-color: #ffffff;
     border-top: 1px solid #EBEDF3;
 }
-
-
-.social a{
-
+.symbol.symbol-light .symbol-label:hover {
+    background-color: #909ca8;
 }
-.social a:hover{
-    background-color: red;
+.symbol.symbol-light .symbol-label.active {
+    background-color: #909ca8;
+}
+.checkbox{
+    margin-right: 5px;
 }

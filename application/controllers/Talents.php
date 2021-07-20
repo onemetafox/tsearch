@@ -74,7 +74,6 @@ class Talents extends PublicController {
 	////////////////////  //////////////////////////////////////////////////////
 	public function search(){
 		$filter = $this->input->post();
-
 		if(!isset($filter["pagination"])){
 			
 			$pagination["page"] = 1;

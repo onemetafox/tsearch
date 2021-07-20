@@ -66,23 +66,20 @@
 		        <div class="switch-field">
 				    <input type="radio" id="all" name="listing_filter" value="all" checked data-filter="*" class="selected">
 				    <label for="all">All</label>
-				    <input type="radio" id="popular" name="listing_filter" value="popular" data-filter=".popular">
-				    <label for="popular">Popular</label>
-				    <input type="radio" id="latest" name="listing_filter" value="latest" data-filter=".latest">
-				    <label for="latest">Latest</label>
 				</div>
 		        <div class="search_bar_list">
-				    <input type="text" class="form-control" placeholder="Search again...">
+				    <input type="text" class="form-control" id="keyword" value="<?=$query["keyword"]?>" placeholder="もう一度検索...">
 				</div>
 				<a class="btn_search_mobile btn_filters" data-toggle="collapse" href="#collapseSearch"><i class="icon_search"></i></a>
 				<a href="#collapseFilters" data-toggle="collapse" class="btn_filters"><i class="icon_adjust-vert"></i><span>Filters</span></a>
 		    </div>
 		    <div class="collapse filters_2" id="collapseFilters">
 			    <div class="container margin_detail">
-			        <div class="row mt-10">
+			        <div class="row mt-10 justify-content-center">
 			            <form method="post" action="<?=base_url()?>talents/search" id="kt_search_form">
-			            	<input type="hidden" id="page" name="pagination[page]">
-			            	<input type="hidden" id="form_keyword" name="query[keyword]">
+			            	<input type="hidden" id="page" name="pagination[page]" value="<?=$pagination["page"]?>">
+			            	<input type="hidden" id="form_keyword" name="query[keyword]" value="<?=$query["keyword"]?>">
+			            	<input type="hidden" id="media" name="query[media]" value="<?=$query["media"]?>">
 			                <div class="form-group justify-content-center row">
 			                    <div class="col-lg-2 input-group">
 			                        <label class="col-form-label text-right col-lg-4 col-md-4 col-sm-12">男女</label>
@@ -103,54 +100,48 @@
 			                    </div>
 			                    <div class="col-lg-7 input-group" style="padding-left: 100px;">
 			                        <div class="d-flex align-items-center flex-wrap social">
-										<a class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-											<span class="mr-10">
-												<i class="flaticon-youtube icon-3x text-muted font-weight-bold"></i>
-												<div class="d-flex flex-column text-dark-75">
-													<span class="font-weight-bolder font-size-sm" style="text-align:center;">Youtube</span>
+										<div onclick ="setMedia('youtube', this)" class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+											<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
+												<div class="symbol-label <?=isset($query["media"]) && $query["media"] == 'youtube'?'active':''?>">
+													<img src="<?=asset_url()?>logos/sort_icon_youtube.svg" alt="" class="h-50">
 												</div>
-											</span>
-										</a>
-										<a class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-											<span class="mr-10">
-												<i class="flaticon-facebook-logo-button icon-3x text-muted font-weight-bold"></i>
-												<div class="d-flex flex-column text-dark-75">
-													<span class="font-weight-bolder font-size-sm" style="text-align:center;">Facebook</span>
+											</div>
+										</div>
+										<div onclick ="setMedia('facebook', this)" class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+											<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
+												<div class="symbol-label <?=isset($query["media"]) && $query["media"] == 'facebook'?'active':''?>">
+													<img src="<?=asset_url()?>logos/sort_icon_facebook.svg" alt="" class="h-50">
 												</div>
-											</span>
-										</a>
-										<a class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-											<span class="mr-10">
-												<i class="flaticon-twitter-logo-button icon-3x text-muted font-weight-bold"></i>
-												<div class="d-flex flex-column text-dark-75">
-													<span class="font-weight-bolder font-size-sm" style="text-align:center;">Net</span>
+											</div>
+										</div>
+										<div onclick ="setMedia('follow', this)" class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+											<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
+												<div class="symbol-label <?=isset($query["media"]) && $query["media"] == 'follw'?'active':''?>">
+													<img src="<?=asset_url()?>logos/015-telegram.svg" alt="" class="h-50">
 												</div>
-											</span>
-										</a>
-										<a class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-											<span class="mr-10">
-												<i class="flaticon-instagram-logo icon-3x text-muted font-weight-bold"></i>
-												<div class="d-flex flex-column flex-lg-fill">
-													<span class="font-weight-bolder font-size-sm" style="text-align:center;">Instagram</span>
+											</div>
+										</div>
+										<div onclick ="setMedia('instagram', this)" class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+											<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
+												<div class="symbol-label <?=isset($query["media"]) && $query["media"] == 'instagram'?'active':''?>">
+													<img src="<?=asset_url()?>logos/sort_icon_instagram.svg" alt="" class="h-50">
 												</div>
-											</span>
-										</a>
-										<a class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-											<span class="mr-10">
-												<i class="flaticon-twitter-logo-button icon-3x text-muted font-weight-bold"></i>
-												<div class="d-flex flex-column">
-													<span class="font-weight-bolder font-size-sm" style="text-align:center;">Twitter</span>
+											</div>
+										</div>
+										<div onclick ="setMedia('twitter', this)" class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+											<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
+												<div class="symbol-label <?=isset($query["media"]) && $query["media"] == 'twitter'?'active':''?>">
+													<img src="<?=asset_url()?>logos/sort_icon_twitter.svg" alt="" class="h-50">
 												</div>
-											</span>
-										</a>
-										<a class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-											<span class="mr-10">
-												<i class="flaticon-twitter-logo-button icon-3x text-muted font-weight-bold"></i>
-												<div class="d-flex flex-column">
-													<span class="font-weight-bolder font-size-sm" style="text-align:center;">Tiktok</span>
+											</div>
+										</div>
+										<div onclick ="setMedia('tiktok', this)" class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+											<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
+												<div class="symbol-label <?=isset($query["media"]) && $query["media"] == 'tiktok'?'active':''?>">
+													<img src="<?=asset_url()?>logos/sort_icon_tiktok.svg" alt="" class="h-50">
 												</div>
-											</span>
-										</a>
+											</div>
+										</div>
 									</div>
 			                    </div>
 			                </div>
@@ -159,7 +150,64 @@
 			                		<label class="col-form-label text-right col-lg-12">活動拠点</label>
 			                	</div>
 			                	<div class="col-lg-10">
-			                		
+			                		<div class="activity-base-container">
+			                			<div class="row mb-5">
+			                				<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11" checked="checked">
+											<span></span>Checked</label>
+			                			</div>
+			                			<div class="row mb-5">
+			                				<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+			                			</div>
+			                			<div class="row mb-5">
+			                				<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+			                			</div>
+										<div class="row mb-5">
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+			                			</div>
+			                		</div>
 			                	</div>
 			                </div>
 			                <div class="form-group justify-content-center row">
@@ -167,7 +215,64 @@
 			                		<label class="col-form-label text-right col-lg-12">職業</label>
 			                	</div>
 			                	<div class="col-lg-10">
-			                		
+			                		<div class="activity-base-container">
+			                			<div class="row mb-5">
+			                				<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11" checked="checked">
+											<span></span>Checked</label>
+			                			</div>
+			                			<div class="row mb-5">
+			                				<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+			                			</div>
+			                			<div class="row mb-5">
+			                				<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+			                			</div>
+										<div class="row mb-5">
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+			                			</div>
+			                		</div>
 			                	</div>
 			                </div>
 			                 <div class="form-group justify-content-center row">
@@ -175,7 +280,64 @@
 			                		<label class="col-form-label text-right col-lg-12">投稿ジャンル</label>
 			                	</div>
 			                	<div class="col-lg-10">
-			                		
+			                		<div class="activity-base-container">
+			                			<div class="row mb-5">
+			                				<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11" checked="checked">
+											<span></span>Checked</label>
+			                			</div>
+			                			<div class="row mb-5">
+			                				<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+			                			</div>
+			                			<div class="row mb-5">
+			                				<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+			                			</div>
+										<div class="row mb-5">
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+											<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" name="Checkboxes11">
+											<span></span>Checked</label>
+			                			</div>
+			                		</div>
 			                	</div>
 			                </div>
 			                <div class="card-footer">
@@ -349,11 +511,11 @@
 									<!--begin: Item-->
 									<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
 										<span class="mr-4">
-											<i class="flaticon-twitter-logo-button icon-2x text-muted font-weight-bold"></i>
+											<i class="flaticon-users-1 icon-2x text-muted font-weight-bold"></i>
 										</span>
 										<div class="d-flex flex-column text-dark-75">
-											<span class="font-weight-bolder font-size-sm">Net</span>
-											<span class="font-weight-bolder font-size-h5"><?=$item["tw_fw"]?$item["tw_fw"]:'0'?></span>
+											<span class="font-weight-bolder font-size-sm">Follows</span>
+											<span class="font-weight-bolder font-size-h5"><?=$item["fw_count"]?$item["fw_count"]:'0'?></span>
 										</div>
 									</div>
 									<!--end: Item-->
@@ -402,9 +564,9 @@
 										<i class="ki ki-bold-arrow-back icon-xs"></i>
 									</a>
 									<?php } ?>
-									<?php for($i = $pagination["start_page"]; $i < $pagination["end_page"] ; $i ++) { ?>
+									<?php for($i = $pagination["start_page"]; $i < $pagination["end_page"] ; $i ++) { if($i <= $pagination["total_page"]) {?>
 										<a href="javascript:goPage('<?=$i ?>')" class="btn btn-icon btn-sm border-0 btn-hover-primary mr-2 my-1 <?=$i == $pagination["page"]? 'active': ''?>"><?= $i?></a>
-									<?php } ?>
+									<?php } } ?>
 									<?php if(($pagination["page"]+1) > $pagination["total_page"]) {?>
 									<a class="btn btn-icon btn-sm btn-light-default mr-2 my-1">
 										<i class="ki ki-bold-arrow-next icon-xs"></i>
