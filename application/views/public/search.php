@@ -62,161 +62,146 @@
 				
 	<main class="bg_color">
 		<div class="filters_full element_to_stick">
-		    <div class="container clearfix" style="padding-bottom: 15px;">
-		        <a href="javascript:showSearch()"  class="btn_filters"><i class="icon_adjust-vert"></i><span>Filters</span></a>
+		    <div class="container clearfix">
+		        <div class="switch-field">
+				    <input type="radio" id="all" name="listing_filter" value="all" checked data-filter="*" class="selected">
+				    <label for="all">All</label>
+				    <input type="radio" id="popular" name="listing_filter" value="popular" data-filter=".popular">
+				    <label for="popular">Popular</label>
+				    <input type="radio" id="latest" name="listing_filter" value="latest" data-filter=".latest">
+				    <label for="latest">Latest</label>
+				</div>
 		        <div class="search_bar_list">
-				    <input id='keyword' type="text" class="form-control" placeholder="もう一度検索..."
-				    value='<?=$query["keyword"]?>'>
+				    <input type="text" class="form-control" placeholder="Search again...">
 				</div>
 				<a class="btn_search_mobile btn_filters" data-toggle="collapse" href="#collapseSearch"><i class="icon_search"></i></a>
+				<a href="#collapseFilters" data-toggle="collapse" class="btn_filters"><i class="icon_adjust-vert"></i><span>Filters</span></a>
 		    </div>
-		  
+		    <div class="collapse filters_2" id="collapseFilters">
+			    <div class="container margin_detail">
+			        <div class="row mt-10">
+			            <form method="post" action="<?=base_url()?>talents/search" id="kt_search_form">
+			            	<input type="hidden" id="page" name="pagination[page]">
+			            	<input type="hidden" id="form_keyword" name="query[keyword]">
+			                <div class="form-group justify-content-center row">
+			                    <div class="col-lg-2 input-group">
+			                        <label class="col-form-label text-right col-lg-4 col-md-4 col-sm-12">男女</label>
+									<div class="col-lg-8">
+										<select class="form-control" id="gender" name="query[gender]">
+											<option value="" ></option>
+											<option value="1" <?=isset($query["gender"]) && $query["gender"] == 1?'selected':''?>>男</option>
+											<option value="2" <?=isset($query["gender"]) && $query["gender"] == 2?'selected':''?>>女</option>
+										</select>
+									</div>
+			                    </div>
+			                    <div class="col-lg-3 input-group">
+			                        <label class="col-form-label text-right col-lg-4 col-md-3 col-sm-12">年齢</label>
+									<div class="col-lg-8 input-group">
+			                            <input type="text" class="form-control" placeholder="開始年齢" value="<?=isset($query['age_from'])?$query['age_from']:''?>" name="query[age_from]">
+			                            <input type="text" class="form-control" placeholder="終了年齢" value="<?=isset($query['age_to'])?$query['age_to']:''?>" name="query[age_to]">
+			                        </div>
+			                    </div>
+			                    <div class="col-lg-7 input-group" style="padding-left: 100px;">
+			                        <div class="d-flex align-items-center flex-wrap social">
+										<a class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+											<span class="mr-10">
+												<i class="flaticon-youtube icon-3x text-muted font-weight-bold"></i>
+												<div class="d-flex flex-column text-dark-75">
+													<span class="font-weight-bolder font-size-sm" style="text-align:center;">Youtube</span>
+												</div>
+											</span>
+										</a>
+										<a class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+											<span class="mr-10">
+												<i class="flaticon-facebook-logo-button icon-3x text-muted font-weight-bold"></i>
+												<div class="d-flex flex-column text-dark-75">
+													<span class="font-weight-bolder font-size-sm" style="text-align:center;">Facebook</span>
+												</div>
+											</span>
+										</a>
+										<a class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+											<span class="mr-10">
+												<i class="flaticon-twitter-logo-button icon-3x text-muted font-weight-bold"></i>
+												<div class="d-flex flex-column text-dark-75">
+													<span class="font-weight-bolder font-size-sm" style="text-align:center;">Net</span>
+												</div>
+											</span>
+										</a>
+										<a class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+											<span class="mr-10">
+												<i class="flaticon-instagram-logo icon-3x text-muted font-weight-bold"></i>
+												<div class="d-flex flex-column flex-lg-fill">
+													<span class="font-weight-bolder font-size-sm" style="text-align:center;">Instagram</span>
+												</div>
+											</span>
+										</a>
+										<a class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+											<span class="mr-10">
+												<i class="flaticon-twitter-logo-button icon-3x text-muted font-weight-bold"></i>
+												<div class="d-flex flex-column">
+													<span class="font-weight-bolder font-size-sm" style="text-align:center;">Twitter</span>
+												</div>
+											</span>
+										</a>
+										<a class="d-flex align-items-center flex-lg-fill mr-5 my-1">
+											<span class="mr-10">
+												<i class="flaticon-twitter-logo-button icon-3x text-muted font-weight-bold"></i>
+												<div class="d-flex flex-column">
+													<span class="font-weight-bolder font-size-sm" style="text-align:center;">Tiktok</span>
+												</div>
+											</span>
+										</a>
+									</div>
+			                    </div>
+			                </div>
+			                <div class="form-group justify-content-center row">
+			                	<div class="col-lg-2">
+			                		<label class="col-form-label text-right col-lg-12">活動拠点</label>
+			                	</div>
+			                	<div class="col-lg-10">
+			                		
+			                	</div>
+			                </div>
+			                <div class="form-group justify-content-center row">
+			                	<div class="col-lg-2">
+			                		<label class="col-form-label text-right col-lg-12">職業</label>
+			                	</div>
+			                	<div class="col-lg-10">
+			                		
+			                	</div>
+			                </div>
+			                 <div class="form-group justify-content-center row">
+			                	<div class="col-lg-2">
+			                		<label class="col-form-label text-right col-lg-12">投稿ジャンル</label>
+			                	</div>
+			                	<div class="col-lg-10">
+			                		
+			                	</div>
+			                </div>
+			                <div class="card-footer">
+			                    <div class="card-toolbar float-right">
+			                        <button type="button" id="search" class="btn btn-primary font-weight-bolder">
+			                            </i>もう一度検索</a>
+			                        </button>
+			                    </div>
+			                </div>
+			            </form>
+			        </div>
+			    </div>
+			</div>
+			<!-- /filters -->
 			<div class="collapse" id="collapseSearch">
 			    <div class="search_bar_list">
 			        <input type="text" class="form-control" placeholder="Search again...">
 			    </div>
 			</div>
-		</div>
-		<div class="card-footer collapse justify-content-center">
-            <form method="post" action="<?=base_url()?>talents/search" id="kt_search_form">
-            	<input type="hidden" id="page" name="pagination[page]">
-            	<input type="hidden" id="form_keyword" name="query[keyword]">
-                <div class="form-group justify-content-center row">
-                    <div class="col-lg-2 input-group">
-                        <label class="col-form-label text-right col-lg-3 col-md-3 col-sm-12">男女</label>
-						<div class="col-lg-9">
-							<select class="form-control" id="gender" name="query[gender]">
-								<option value="" ></option>
-								<option value="1" <?=isset($query["gender"]) && $query["gender"] == 1?'selected':''?>>男</option>
-								<option value="2" <?=isset($query["gender"]) && $query["gender"] == 2?'selected':''?>>女</option>
-							</select>
-						</div>
-                    </div>
-                    <div class="col-lg-2 input-group">
-                        <label class="col-form-label text-right col-lg-3 col-md-3 col-sm-12">年齢</label>
-						<div class="col-lg-9 input-group">
-                            <input type="text" class="form-control" value="<?=isset($query['age_from'])?$query['age_from']:''?>" name="query[date_from]">
-                            <div class="input-group-append">
-                                <span class="input-group-text">
-                                    ～
-                                </span>
-                            </div>
-                            <input type="text" class="form-control" value="<?=isset($query['age_to'])?$query['age_to']:''?>" name="query[age_to]">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 input-group">
-                        <div class="d-flex align-items-center flex-wrap">
-							<!--begin: Item-->
-							<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-								<span class="mr-4">
-									<i class="flaticon-youtube icon-3x text-muted font-weight-bold"></i>
-									<div class="d-flex flex-column text-dark-75">
-										<span class="font-weight-bolder font-size-sm">Youtube</span>
-									</div>
-								</span>
-								
-							</div>
-							<!--end: Item-->
-							<!--begin: Item-->
-							<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-								<span class="mr-4">
-									<i class="flaticon-facebook-logo-button icon-3x text-muted font-weight-bold"></i>
-								</span>
-								<div class="d-flex flex-column text-dark-75">
-									<span class="font-weight-bolder font-size-sm">Facebook</span>
-								</div>
-							</div>
-							<!--end: Item-->
-							<!--begin: Item-->
-							<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-								<span class="mr-4">
-									<i class="flaticon-twitter-logo-button icon-3x text-muted font-weight-bold"></i>
-								</span>
-								<div class="d-flex flex-column text-dark-75">
-									<span class="font-weight-bolder font-size-sm">Net</span>
-								</div>
-							</div>
-							<!--end: Item-->
-							<!--begin: Item-->
-							<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-								<span class="mr-4">
-									<i class="flaticon-instagram-logo icon-3x text-muted font-weight-bold"></i>
-								</span>
-								<div class="d-flex flex-column flex-lg-fill"><span class="font-weight-bolder font-size-sm">Instagram</span>
-								</div>
-							</div>
-							<!--end: Item-->
-							<!--begin: Item-->
-							<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-								<span class="mr-4">
-									<i class="flaticon-twitter-logo-button icon-3x text-muted font-weight-bold"></i>
-								</span>
-								<div class="d-flex flex-column">
-									<span class="font-weight-bolder font-size-sm">Twitter</span>
-								</div>
-							</div>
-							<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-								<span class="mr-4">
-									<i class="flaticon-twitter-logo-button icon-3x text-muted font-weight-bold"></i>
-								</span>
-								<div class="d-flex flex-column">
-									<span class="font-weight-bolder font-size-sm">Tiktok</span>
-								</div>
-							</div>
-							<div class="d-flex align-items-center flex-lg-fill mr-5 my-1">
-								<span class="mr-4">
-									<i class="flaticon-twitter-logo-button icon-3x text-muted font-weight-bold"></i>
-								</span>
-								<div class="d-flex flex-column">
-									<span class="font-weight-bolder font-size-sm">Wear</span>
-								</div>
-							</div>
-						</div>
-                    </div>
-                </div>
-                <div class="form-group justify-content-center row">
-                	<div class="col-lg-3">
-                		<label class="col-form-label text-right col-lg-3 col-md-3 col-sm-12">活動拠点</label>
-                	</div>
-                	<div class="col-lg-9">
-                		
-                	</div>
-                </div>
-                <div class="form-group justify-content-center row">
-                	<div class="col-lg-3">
-                		<label class="col-form-label text-right col-lg-3 col-md-3 col-sm-12">職業</label>
-                	</div>
-                	<div class="col-lg-9">
-                		
-                	</div>
-                </div>
-                 <div class="form-group justify-content-center row">
-                	<div class="col-lg-3">
-                		<label class="col-form-label text-right col-lg-3 col-md-3 col-sm-12">投稿ジャンル</label>
-                	</div>
-                	<div class="col-lg-9">
-                		
-                	</div>
-                </div>
-                <div class="card-footer">
-                    <div class="card-toolbar float-right">
-                        <button type="button" id="search" class="btn btn-primary font-weight-bolder">
-                            </i>もう一度検索</a>
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-		<!-- /filters -->
-		<div class="collapse" id="collapseSearch">
-		    <div class="search_bar_list">
-		        <input type="text" class="form-control" placeholder="Search again...">
-		    </div>
-		</div>
 		<!-- /collapseSearch -->
 		</div>
 
-
+		<!-- <div class="card-footer collapse justify-content-center">
+            
+        </div> -->
+		
 		<div class="content d-flex flex-column flex-column-fluid isotope-wrapper" id="kt_content">
 			<div class="subheader py-2 subheader-transparen isotope-itemt" id="kt_subheader" style="color: black;">
 				<div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
@@ -565,9 +550,9 @@
 	<!-- /Sign In Modal -->
 	<script type="text/javascript"> var HOST_URL = "<?=base_url()?>"</script>
 	<!-- COMMON SCRIPTS -->
-    <script src="<?=asset_url()?>/plugins/global/plugins.bundle.js"></script>
+<!--     <script src="<?=asset_url()?>/plugins/global/plugins.bundle.js"></script>
 	<script src="<?=asset_url()?>/plugins/custom/prismjs/prismjs.bundle.js"></script>
-	<script src="<?=asset_url()?>/js/scripts.bundle.js"></script>
+	<script src="<?=asset_url()?>/js/scripts.bundle.js"></script> -->
     <script src="<?=asset_url()?>js/common_scripts.min.js"></script>
     <script src="<?=asset_url()?>js/common_func.js"></script>
     <script src="<?=asset_url()?>assets/validate.js"></script>
