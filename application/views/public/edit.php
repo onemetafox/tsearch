@@ -687,10 +687,10 @@
                     <h3 data-target="#collapse_1">クイックリンク</h3>
                     <div class="collapse dont-collapse-sm links" id="collapse_1">
                         <ul>
-                            <li><a href="submit-professional.html">続きを読む</a></li>
-                            <li><a href="help.html">助けて</a></li>
-                            <li><a href="login.html">ログイン</a></li>
-                            <li><a href="contacts.html">連絡先</a></li>
+                            <li><a>続きを読む</a></li>
+                            <li><a>助けて</a></li>
+                            <li><a>ログイン</a></li>
+                            <li><a>連絡先</a></li>
                         </ul>
                     </div>
                 </div>
@@ -702,7 +702,7 @@
                             <form method="post" action="assets/newsletter.php" name="newsletter_form" id="newsletter_form">
                                 <div class="form-group">
                                     <input type="email" name="email_newsletter" id="email_newsletter" class="form-control" placeholder="メールアドレス">
-                                    <button type="submit" id="submit-newsletter"><i class="arrow_carrot-right"></i></button>
+                                    <button type="button" id="submit-newsletter"><i class="arrow_carrot-right"></i></button>
                                 </div>
                             </form>
                         </div>
@@ -729,7 +729,7 @@
                     <ul class="additional_links">
                         <li><a href="#0">規約と条件</a></li>
                         <li><a href="#0">プライバシー</a></li>
-                        <li><span>© 2020 Prozim</span></li>
+                        <li><span>© 2021 Prozim</span></li>
                     </ul>
                 </div>
             </div>
@@ -747,18 +747,9 @@
     <script src="<?= asset_url()?>js/scripts.bundle.js"></script>
     <script src="<?= asset_url()?>js/pages/crud/file-upload/image-input.js"></script>
     <script src="<?= asset_url()?>plugins/custom/ckeditor/ckeditor-classic.bundle.js"></script>
-<!--     <script src="<?= asset_url()?>scripts/edit.js"></script>
-    <script src="<?= asset_url()?>js/pages/crud/file-upload/image-input.js"></script>
-    <script src="<?= asset_url()?>js/common_scripts.min.js"></script>
-    <script src="<?= asset_url()?>js/common_func.js"></script>
-    <script src="<?= asset_url()?>assets/validate.js"></script> -->
-    
+
     <!-- SPECIFIC SCRIPTS -->
     <script src="<?=asset_url()?>js/toastr.min.js"></script>
-<!--     <script src="<?= asset_url()?>js/sticky_sidebar.min.js"></script>
-    <script src="<?= asset_url()?>js/specific_detail.js"></script>
-    <script src="<?= asset_url()?>js/datepicker.min.js"></script>
-    <script src="<?= asset_url()?>js/datepicker_func_1.js"></script> -->
     <script src="<?= asset_url()?>scripts/register.js">></script>
 
 

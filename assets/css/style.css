@@ -3872,7 +3872,7 @@ footer .links ul li a:after {
   -moz-box-shadow: none;
   box-shadow: none;
 }
-#newsletter button[type='submit'] {
+#newsletter button[type='button'] {
   position: absolute;
   right: 0;
   color: #fff;
@@ -3896,7 +3896,7 @@ footer .links ul li a:after {
   transition: all 0.3s ease-in-out;
   outline: none;
 }
-#newsletter button[type='submit']:hover {
+#newsletter button[type='button']:hover {
   background-color: #1f2f6a;
 }
 
