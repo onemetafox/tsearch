@@ -20,7 +20,7 @@
                         <form method="post" action="assets/newsletter.php" name="newsletter_form" id="newsletter_form">
                             <div class="form-group">
                                 <input type="email" name="email_newsletter" id="email_newsletter" class="form-control" placeholder="メールアドレス">
-                                <button type="submit" id="submit-newsletter"><i class="arrow_carrot-right"></i></button>
+                                <button type="button" id="submit-newsletter"><i class="arrow_carrot-right"></i></button>
                             </div>
                         </form>
                     </div>

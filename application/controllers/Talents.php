@@ -81,7 +81,7 @@ class Talents extends PublicController {
 			$pagination = $filter["pagination"];
 		}
 		$pagination["perpage"] = 10;
-
+		// print_r($filter);
 		$limit["start"] = ($pagination["page"]-1) * $pagination["perpage"];
 		$limit["end"] = $pagination["perpage"];
 		
@@ -92,9 +92,9 @@ class Talents extends PublicController {
 			$pagination["total"] = $this->talent->count($filter["query"]);
 		}
 		if( $pagination["total"] % $pagination["perpage"] == 0 ){
-			$pagination["total_page"] = (int)$pagination["total"]/$pagination["perpage"];
+			$pagination["total_page"] = (int)($pagination["total"]/$pagination["perpage"]);
 		}else{
-			$pagination["total_page"] = (int)$pagination["total"]/$pagination["perpage"] +1;
+			$pagination["total_page"] = (int)($pagination["total"]/$pagination["perpage"] +1);
 		}
 		$pagination["pages"] = ceil($pagination["total"]/$pagination["perpage"]);
 		if(($pagination["page"] % 5) == 0 ){

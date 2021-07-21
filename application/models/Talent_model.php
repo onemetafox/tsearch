@@ -13,11 +13,11 @@
 				$this->db->where("context.content LIKE '%".$params["keyword"]."%'");
 				unset($params["keyword"]);
 			}
-			if(isset($params["age_from"])){
+			if(isset($params["age_from"]) && $params["age_from"]){
 				$this->db->where("talents.age > '" . $params["age_from"] . "'");
 				unset($params['age_from']);
 			}
-			if(isset($params["age_to"])){
+			if(isset($params["age_to"]) && $params["age_to"]){
 				$this->db->where("talents.age < '" . $params["age_to"] . "'");
 				unset($params['age_to']);
 			}	
@@ -52,8 +52,9 @@
 			if(isset($limit)){
 				$this->db->limit($limit["end"], $limit["start"]);
 			}
-			
-			return parent::getDataByParam($filter);
+			$data = parent::getDataByParam($filter);
+			// print_r($this->db->last_query());
+			return $data;
 		}
 
 		public function count($filter = null){

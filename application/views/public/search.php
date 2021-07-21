@@ -375,7 +375,7 @@
 							<div class="d-flex align-items-center font-weight-bold my-2">
 								<!--begin::Item-->
 								<span class="label label-dot label-sm bg-white opacity-75 mx-3"></span>
-								<a href="" class="text-white text-hover-white opacity-75 hover-opacity-100"><h1 style="color:black;"><?= $pagination["total"]?></h1></a>
+								<a class="text-white text-hover-white opacity-75 hover-opacity-100"><h1 style="color:black;"><?= $pagination["total"]?></h1></a>
 								<!--end::Item-->
 								<!--begin::Item-->
 								<span class="label label-dot label-sm bg-white opacity-75 mx-3"></span>
@@ -419,7 +419,7 @@
 												<!--end::Name-->
 												<!--begin::Contacts-->
 												<div class="d-flex flex-wrap my-2">
-													<a href="#" class="text-muted text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+													<a  class="text-muted text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
 													<span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
 														<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-notification.svg-->
 														<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -431,7 +431,7 @@
 														</svg>
 														<!--end::Svg Icon-->
 													</span><?= $item["email"]?></a>
-													<a href="#" class="text-muted text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+													<a class="text-muted text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
 													<span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
 														<!--begin::Svg Icon | path:assets/media/svg/icons/General/Lock.svg-->
 														<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -445,7 +445,7 @@
 														</svg>
 														<!--end::Svg Icon-->
 													</span><?=$item["mobile"]?></a>
-													<a href="#" class="text-muted text-hover-primary font-weight-bold">
+													<a class="text-muted text-hover-primary font-weight-bold">
 													<span class="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
 														<!--begin::Svg Icon | path:assets/media/svg/icons/Map/Marker2.svg-->
 														<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -602,10 +602,10 @@
 	                <h3 data-target="#collapse_1">クイックリンク</h3>
 	                <div class="collapse dont-collapse-sm links" id="collapse_1">
 	                    <ul>
-	                        <li><a href="submit-professional.html">続きを読む</a></li>
-	                        <li><a href="help.html">助けて</a></li>
-	                        <li><a href="login.html">ログイン</a></li>
-	                        <li><a href="contacts.html">連絡先</a></li>
+	                        <li><a>続きを読む</a></li>
+	                        <li><a>助けて</a></li>
+	                        <li><a>ログイン</a></li>
+	                        <li><a>連絡先</a></li>
 	                    </ul>
 	                </div>
 	            </div>
@@ -616,7 +616,7 @@
 	                        <div id="message-newsletter"></div>
                             <div class="form-group">
                                 <input type="email" name="email_newsletter" id="email_newsletter" class="form-control" placeholder="メールアドレス">
-                                <button type="submit" id="submit-newsletter"><i class="arrow_carrot-right"></i></button>
+                                <button type="button" id="submit-newsletter"><i class="arrow_carrot-right"></i></button>
                             </div>
 	                    </div>
 	                    <div class="follow_us">
@@ -642,7 +642,7 @@
 	                <ul class="additional_links">
 	                    <li><a href="#0">規約と条件</a></li>
 	                    <li><a href="#0">プライバシー</a></li>
-	                    <li><span>© 2020 Prozim</span></li>
+	                    <li><span>© 2021 Prozim</span></li>
 	                </ul>
 	            </div>
 	        </div>

@@ -379,10 +379,10 @@
 	                <h3 data-target="#collapse_1">クイックリンク</h3>
 	                <div class="collapse dont-collapse-sm links" id="collapse_1">
 	                    <ul>
-	                        <li><a href="submit-professional.html">続きを読む</a></li>
-	                        <li><a href="help.html">助けて</a></li>
-	                        <li><a href="login.html">ログイン</a></li>
-	                        <li><a href="contacts.html">連絡先</a></li>
+	                        <li><a >続きを読む</a></li>
+	                        <li><a>助けて</a></li>
+	                        <li><a >ログイン</a></li>
+	                        <li><a >連絡先</a></li>
 	                    </ul>
 	                </div>
 	            </div>
@@ -393,7 +393,7 @@
 	                        <div id="message-newsletter"></div>
                             <div class="form-group">
                                 <input type="email" name="email_newsletter" id="email_newsletter" class="form-control" placeholder="メールアドレス">
-                                <button type="submit" id="submit-newsletter"><i class="arrow_carrot-right"></i></button>
+                                <button type="button" id="submit-newsletter"><i class="arrow_carrot-right"></i></button>
                             </div>
 	                    </div>
 	                    <div class="follow_us">
@@ -419,7 +419,7 @@
 	                <ul class="additional_links">
 	                    <li><a href="#0">規約と条件</a></li>
 	                    <li><a href="#0">プライバシー</a></li>
-	                    <li><span>© 2020 Prozim</span></li>
+	                    <li><span>© 2021 Prozim</span></li>
 	                </ul>
 	            </div>
 	        </div>

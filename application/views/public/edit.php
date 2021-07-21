@@ -62,7 +62,7 @@
         </div>
     </header>
     <main class="bg_gray pattern">
-        <div class="container margin_60_40 mt-40">
+        <div class="container margin_60_40 mt-20">
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="card card-custom gutter-b example example-compact">
