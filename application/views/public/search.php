@@ -65,7 +65,7 @@
 		    <div class="container clearfix">
 		        <div class="switch-field">
 				    <input type="radio" id="all" name="listing_filter" value="all" checked data-filter="*" class="selected">
-				    <label for="all">All</label>
+				    <label for="all">高度な検索</label>
 				</div>
 		        <div class="search_bar_list">
 				    <input type="text" class="form-control" id="keyword" value="<?=$query["keyword"]?>" placeholder="もう一度検索...">
@@ -78,8 +78,8 @@
 			        <div class="row mt-10 justify-content-center">
 			            <form method="post" action="<?=base_url()?>talents/search" id="kt_search_form">
 			            	<input type="hidden" id="page" name="pagination[page]" value="<?=$pagination["page"]?>">
-			            	<input type="hidden" id="form_keyword" name="query[keyword]" value="<?=$query["keyword"]?>">
-			            	<input type="hidden" id="media" name="query[media]" value="<?=$query["media"]?>">
+			            	<input type="hidden" id="form_keyword" name="query[keyword]" value="<?=isset($query["keyword"])?$query["keyword"]:''?>">
+			            	<input type="hidden" id="media" name="query[media]" value="<?=isset($query["media"])?$query["media"]:''?>">
 			                <div class="form-group justify-content-center row">
 			                    <div class="col-lg-2 input-group">
 			                        <label class="col-form-label text-right col-lg-4 col-md-4 col-sm-12">男女</label>
@@ -117,7 +117,7 @@
 										<div onclick ="setMedia('follow', this)" class="d-flex align-items-center flex-lg-fill mr-5 my-1">
 											<div class="symbol symbol-50 symbol-light mr-3 flex-shrink-0">
 												<div class="symbol-label <?=isset($query["media"]) && $query["media"] == 'follw'?'active':''?>">
-													<img src="<?=asset_url()?>logos/015-telegram.svg" alt="" class="h-50">
+													<img src="<?=asset_url()?>logos/sort_icon_recommend.svg" alt="" class="h-50">
 												</div>
 											</div>
 										</div>

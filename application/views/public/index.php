@@ -16,7 +16,9 @@
                                         <p class="owl-slide-animated owl-slide-subtitle">
                                             予約、チャット、またはビデオ通話で相談を予約する
                                         </p>
-                                        <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="grid-listing-1.html" role="button">続きを読む</a></div>
+                                        <div class="owl-slide-animated owl-slide-cta">
+                                            <a class="btn_1" role="button">続きを読む</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -34,7 +36,7 @@
                                         <p class="owl-slide-animated owl-slide-subtitle">
                                             +12.000人以上の信頼できる専門家がリストされています
                                         </p>
-                                        <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="grid-listing-1.html" role="button">Read more</a></div>
+                                        <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" role="button">続きを読む</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +54,9 @@
                                         <p class="owl-slide-animated owl-slide-subtitle">
                                             Prozimに無料で参加して、より多くの可視性を手に入れましょう
                                         </p>
-                                        <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="submit-professional.html" role="button">Read more</a></div>
+                                        <div class="owl-slide-animated owl-slide-cta">
+                                            <a class="btn_1" role="button">続きを読む</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -96,14 +100,14 @@
                         <span><em></em></span>
                         <h2>ウィークリーレートオファー</h2>
                         <p>彼らが教育を受けた市民になると、資金調達は抑止されます。</p>
-                        <a href="#0">すべて表示</a>
+                        <a>すべて表示</a>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="list_home">
                         <ul>
                             <li>
-                                <a href="detail-page.html">
+                                <a>
                                     <figure>
                                         <img src="<?=asset_url()?>img/professional_list_placeholder.png" data-src="<?=asset_url()?>img/professional_list_1.jpg" alt="" class="lazy">
                                     </figure>
@@ -119,7 +123,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="detail-page.html">
+                                <a>
                                     <figure>
                                         <img src="<?=asset_url()?>img/professional_list_placeholder.png" data-src="<?=asset_url()?>img/professional_list_2.jpg" alt="" class="lazy">
                                     </figure>
@@ -140,7 +144,7 @@
                     <div class="list_home">
                         <ul>
                             <li>
-                                <a href="detail-page.html">
+                                <a>
                                     <figure>
                                         <img src="<?=asset_url()?>img/professional_list_placeholder.png" data-src="<?=asset_url()?>img/professional_list_3.jpg" alt="" class="lazy">
                                     </figure>
@@ -155,7 +159,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="detail-page.html">
+                                <a>
                                     <figure>
                                         <img src="<?=asset_url()?>img/professional_list_placeholder.png" data-src="<?=asset_url()?>img/professional_list_4.jpg" alt="" class="lazy">
                                     </figure>
@@ -204,7 +208,7 @@
                                 <p>チャットまたはビデオ通話を介して、予約の専門家とつながりましょう！</p>
                             </li>
                         </ul>
-                        <p class="add_top_30"><a href="grid-listing-1.html" class="btn_1">検索を開始します</a></p>
+                        <p class="add_top_30"><a class="btn_1">検索を開始します</a></p>
                     </div>
                     <!-- /row -->
                 </div>
@@ -220,7 +224,7 @@
                         <div class="ribbon_promo"><span>自由</span></div>
                         <h3>あなたはプロですか？</h3>
                         <p>オンラインでの認知度を高めるためにご参加ください。 あなたは専門的なサービスや相談を探しているさらに多くの顧客にアクセスすることができます。</p>
-                        <a href="submit-professional.html" class="btn_1">続きを読む</a>
+                        <a class="btn_1">続きを読む</a>
                     </div>
                 </div>
             </div>
