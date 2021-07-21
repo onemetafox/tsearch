@@ -98,9 +98,9 @@
                 <div class="col-12">
                     <div class="main_title version_2">
                         <span><em></em></span>
-                        <h2>ウィークリーレートオファー</h2>
+                        <h2>注目のキャスト</h2>
                         <p>彼らが教育を受けた市民になると、資金調達は抑止されます。</p>
-                        <a>すべて表示</a>
+                        <a name="search">すべて表示</a>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -208,7 +208,7 @@
                                 <p>チャットまたはビデオ通話を介して、予約の専門家とつながりましょう！</p>
                             </li>
                         </ul>
-                        <p class="add_top_30"><a class="btn_1">検索を開始します</a></p>
+                        <p class="add_top_30"><a name="search" class="btn_1">検索を開始します</a></p>
                     </div>
                     <!-- /row -->
                 </div>

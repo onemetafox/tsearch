@@ -5,11 +5,11 @@ require_once(APPPATH.'core/PublicController.php');
 
 class Talents extends PublicController {
 	
+
 	public function __construct(){
 		parent::__construct();
 	}
-
-	/**
+		/**
 	 * Index Page for this controller.
 	 *
 	 * Maps to the following URL
@@ -84,7 +84,21 @@ class Talents extends PublicController {
 		// print_r($filter);
 		$limit["start"] = ($pagination["page"]-1) * $pagination["perpage"];
 		$limit["end"] = $pagination["perpage"];
+
+		if(isset($filter["active"])){
+			$filter["query"]["active"] = $filter["active"];
+			$data["active"] = $filter["active"];
 		
+		}
+		if(isset($filter["belonging"])){
+			$filter["query"]["belonging"] = $filter["belonging"];
+			$data["belonging"] = $filter["belonging"];
+		
+		}
+		if(isset($filter["talent"])){
+			$filter["query"]["talent"] = $filter["talent"];
+			$data["talent"] = $filter["talent"];
+		}
 		$data["talents"] = $this->talent->search($filter["query"],$limit);
 		if(!isset($filter["query"])){
 			$pagination["total"] = $this->talent->count();
@@ -110,7 +124,6 @@ class Talents extends PublicController {
 		$config["total_row"] = $pagination["total"];
 		$config["per_page"] = $pagination["perpage"];
 		$data["user"] = $this->user_data();
-		
 		$this->load->view("public/search", $data);
 	}
 	public function view($id) {

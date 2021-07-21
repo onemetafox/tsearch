@@ -9,4 +9,5 @@ if ( ! function_exists('asset_url()'))
     function upload_url(){
         return base_url().'uploads/';
     }
+
 }

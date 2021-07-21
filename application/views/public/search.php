@@ -65,7 +65,7 @@
 		    <div class="container clearfix">
 		        <div class="switch-field">
 				    <input type="radio" id="all" name="listing_filter" value="all" checked data-filter="*" class="selected">
-				    <label for="all">高度な検索</label>
+				    <label for="all">検索条件</label>
 				</div>
 		        <div class="search_bar_list">
 				    <input type="text" class="form-control" id="keyword" value="<?=$query["keyword"]?>" placeholder="もう一度検索...">
@@ -151,63 +151,14 @@
 			                	</div>
 			                	<div class="col-lg-10">
 			                		<div class="activity-base-container">
-			                			<div class="row mb-5">
-			                				<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11" checked="checked">
-											<span></span>Checked</label>
-			                			</div>
-			                			<div class="row mb-5">
-			                				<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-			                			</div>
-			                			<div class="row mb-5">
-			                				<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-			                			</div>
-										<div class="row mb-5">
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-			                			</div>
-			                		</div>
+				                		<?php foreach ($this->talent->activity_bases as $key => $value) {?>   
+				                		<div style="float: left; margin-top: 20px; width : 200px;">   		
+					                		<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" <?= isset($active) && isset($active[$key])?'checked':''?> name="active[<?= $key?>]">
+											<span></span><?= $value?></label>
+										</div>
+										<?php }?>
+									</div>
 			                	</div>
 			                </div>
 			                <div class="form-group justify-content-center row">
@@ -215,63 +166,14 @@
 			                		<label class="col-form-label text-right col-lg-12">職業</label>
 			                	</div>
 			                	<div class="col-lg-10">
-			                		<div class="activity-base-container">
-			                			<div class="row mb-5">
-			                				<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11" checked="checked">
-											<span></span>Checked</label>
-			                			</div>
-			                			<div class="row mb-5">
-			                				<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-			                			</div>
-			                			<div class="row mb-5">
-			                				<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-			                			</div>
-										<div class="row mb-5">
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-			                			</div>
+			                		<div class="belonging-container">
+			                			<?php foreach ($this->talent->belonging as $key => $value) {?>   
+				                		<div style="float: left; margin-top: 20px; width : 200px;">   		
+					                		<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" <?= isset($belonging) && isset($belonging[$key])?'checked':''?> name="belonging[<?= $key?>]">
+											<span></span><?= $value?></label>
+										</div>
+										<?php }?>
 			                		</div>
 			                	</div>
 			                </div>
@@ -280,63 +182,14 @@
 			                		<label class="col-form-label text-right col-lg-12">投稿ジャンル</label>
 			                	</div>
 			                	<div class="col-lg-10">
-			                		<div class="activity-base-container">
-			                			<div class="row mb-5">
-			                				<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11" checked="checked">
-											<span></span>Checked</label>
-			                			</div>
-			                			<div class="row mb-5">
-			                				<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-			                			</div>
-			                			<div class="row mb-5">
-			                				<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-			                			</div>
-										<div class="row mb-5">
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-											<label class="checkbox checkbox-primary ml-5">
-											<input type="checkbox" name="Checkboxes11">
-											<span></span>Checked</label>
-			                			</div>
+			                		<div class="talent-container">
+			                			<?php foreach ($this->talent->skills as $key => $value) {?>   
+				                		<div style="float: left; margin-top: 20px; width : 200px;">   		
+					                		<label class="checkbox checkbox-primary ml-5">
+											<input type="checkbox" <?= isset($talent) && isset($talent[$key])?'checked':''?> name="talent[<?= $key?>]">
+											<span></span><?= $value?></label>
+										</div>
+										<?php }?>
 			                		</div>
 			                	</div>
 			                </div>

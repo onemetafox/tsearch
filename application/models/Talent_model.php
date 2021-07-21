@@ -6,8 +6,9 @@
 	class Talent_model extends BaseModel
 	{
 		var $table = 'talents';
-
-
+		var $belonging = [ "学生", "会社員", "主婦・家事手伝い", "パート・アルバイト", "自営業", "その他" ];
+		var $skills = [ "地上波番組", "雑誌・カタログ", "CM", "ファッションショー", "ドラマ・舞台", "ラジオ・MC", "ミス〇〇","サロンモデル", "撮影会", "ライブ/イベント","ライター", "モニター","エキストラ"];
+		var $activity_bases = ["北海道","青森県","岩手県","東京都", "宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県", "静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"];
 		public function where($params) {
 			if(isset($params["keyword"])){
 				$this->db->where("context.content LIKE '%".$params["keyword"]."%'");
@@ -41,6 +42,32 @@
 					$this->db->order_by("talents.fw_count", "DESC");
 
 				unset($params["media"]);
+			}
+			// print_r($params);
+			if(isset($params["active"])){
+				$actives = $params["active"];
+				$this->db->group_start();
+				foreach($actives as $key => $item){
+					$this->db->like("activity_base",$this->activity_bases[$key]);
+				}
+				$this->db->group_end();
+				unset($params["active"]);
+			}
+			if(isset($params["belonging"])){
+				$this->db->group_start();
+				foreach($params["belonging"] as $key => $item){
+					$this->db->like("belonging",$this->belonging[$key]);
+				}
+				$this->db->group_end();
+				unset($params["belonging"]);
+			}
+			if(isset($params["talent"])){
+				$this->db->group_start();
+				foreach($params["talent"] as $key => $item){
+					$this->db->like("talent",$this->skills[$key]);
+				}
+				$this->db->group_end();
+				unset($params["talent"]);
 			}
 
 			return parent::where($params);

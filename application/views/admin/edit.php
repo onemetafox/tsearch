@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <form class="form" id="kt_login_signin_form" enctype="multipart/form-data" method="post">
-                    <input type="hidden" name="id" value = "<?= $talent["id"]?>">
+                    <input type="hidden" name="id" value = "<?= isset($talent['id'])?$talent['id']:''?>">
                     <div class="card-body">
                         <div class="form-group row">
                             <div class="col-lg-4">
@@ -156,22 +156,7 @@
                             <!--  select tag -->
                             <div class="col-lg-4">
                                 <label>活動拠点:</label>
-                                 <select class="form-control select2" id="kt_select2_4" name="activity_base" multiple="multiple">
-                                    <option value="CA">California</option>
-                                    <option value="NV" selected="selected">Nevada</option>
-                                    <option value="OR">Oregon</option>
-                                    <option value="WA">Washington</option>
-                                    <option value="AZ">Arizona</option>
-                                    <option value="CO">Colorado</option>
-                                    <option value="ID">Idaho</option>
-                                    <option value="MT" selected="selected">Montana</option>
-                                    <option value="NE">Nebraska</option>
-                                    <option value="NM">New Mexico</option>
-                                    <option value="ND">North Dakota</option>
-                                    <option value="UT">Utah</option>
-                                    <option value="WY">Wyoming</option>
-                                </select>
-                                <!-- <input type="text" name="activity_base"  value = "<?= isset($talent)?$talent['activity_base']:'' ?>" class="form-control"> -->
+                                <input type="text" name="activity_base"  value = "<?= isset($talent)?$talent['activity_base']:'' ?>" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -179,19 +164,9 @@
                             <div class="col-lg-4">
                                 <label>ご職業:</label>
                                 <select class="form-control select2" id="kt_select2_3" name="talent" multiple="multiple">
-                                    <option value="CA">California</option>
-                                    <option value="NV" selected="selected">Nevada</option>
-                                    <option value="OR">Oregon</option>
-                                    <option value="WA">Washington</option>
-                                    <option value="AZ">Arizona</option>
-                                    <option value="CO">Colorado</option>
-                                    <option value="ID">Idaho</option>
-                                    <option value="MT" selected="selected">Montana</option>
-                                    <option value="NE">Nebraska</option>
-                                    <option value="NM">New Mexico</option>
-                                    <option value="ND">North Dakota</option>
-                                    <option value="UT">Utah</option>
-                                    <option value="WY">Wyoming</option>
+                                    <?php foreach( $this->talent->skills as $index =>$item) {?>
+                                    <option value="<?= $item?>" <?= isset($talent["talent"]) && in_array($key, $talent["talent"])?'selected':''?>><?=$item?></option>
+                                    <?php } ?>
                                 </select>
                                 <!-- <input type="text" name="talent"  value = "<?= isset($talent)?$talent['talent']:'' ?>" class="form-control"> -->
                             </div>
@@ -227,7 +202,12 @@
                             </div>
                             <div class="col-lg-4">
                                 <label>所属:</label>
-                                <input type="text" name="belonging"  value = "<?= isset($talent)?$talent['belonging']:'' ?>" class="form-control">
+                                <select class="form-control select2" id="kt_select2_4" name="belonging" multiple="multiple">
+                                    <?php foreach( $this->talent->belonging as $index =>$item) {?>
+                                    <option value="<?= $item?>" <?= isset($talent["belonging"]) && in_array($key, $talent["belonging"])?'selected':''?>><?=$item?></option>
+                                    <?php }?>
+                                </select>
+                                <!-- <input type="text" name="belonging"  value = "<?= isset($talent)?$talent['belonging']:'' ?>" class="form-control"> -->
                             </div>
                             <div class="col-lg-4">
                                 <label>投稿実績:</label>

@@ -87,7 +87,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                             notEmpty: {
                                 message: 'メールアドレスは必須です'
                             },
-                            emailAddress: {
+                            emailAddress: { 
                                 message: 'メールアドレスを入力してください。'
                             }
                         }
@@ -136,10 +136,12 @@ var KTDatatableRemoteAjaxDemo = function() {
                 if (status == 'Valid') {
                     var paramObj = new FormData($("form")[0]);
                     var files = $('#avatar')[0].files;
-                    // Check file selected or not
+                    paramObj.append("belonging",JSON.stringify($("select[name=belonging]").val()));
+                    paramObj.append("talent",JSON.stringify($("select[name=talent]").val()));
                     if(files.length > 0 ){
                         paramObj.append('file',files[0]);
                     }
+
                     $.ajax({
                         url: HOST_URL + "admin/talent/save",
                         type: 'post',
