@@ -27,8 +27,8 @@
                         </div>
                     </div>
                 </div>
-                <form class="form" enctype="multipart/form-data" method="post">
-                    <input type="hidden" name="id">
+                <form class="form" id="kt_login_signin_form" enctype="multipart/form-data" method="post">
+                    <input type="hidden" name="id" value = "<?= $talent["id"]?>">
                     <div class="card-body">
                         <div class="form-group row">
                             <div class="col-lg-4">
@@ -64,14 +64,17 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-6">
-                                        <label>プロフィール表示名:</label>
-                                        <input type="email" name="profile_name"  value = "<?= isset($talent)?$talent['profile_name']:'' ?>"  class="form-control" >
+                                        <label>性別:</label>
+                                        <select class="form-control select2" id="kt_select2_10" name="gender">
+                                            <option value="1" <?= isset($talent) && $talent['gender'] ==1 ?'selected':'' ?>>男性</option>
+                                            <option value="2" <?= isset($talent) && $talent['gender'] ==2 ?'selected':'' ?>>女性</option>
+                                        </select>
+                                        <!-- <input type="text" name="gender"  value = "<?= isset($talent)?$talent['gender']:'' ?>" class="form-control"> -->
                                     </div>
                                     <div class="col-lg-6">
                                         <label>宛名:</label>
                                         <input type="text" name="address"  value = "<?= isset($talent)?$talent['address']:'' ?>" class="form-control" >
                                     </div>
-                                    
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-lg-6">
@@ -84,14 +87,11 @@
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
-                        
-                        
                         <div class="form-group row">
                             <div class="col-lg-4">
                                 <label>郵便番号:</label>
-                                <input type="email" name="post_code"  value = "<?= isset($talent)?$talent['post_code']:'' ?>" class="form-control" >
+                                <input type="text" name="post_code"  value = "<?= isset($talent)?$talent['post_code']:'' ?>" class="form-control" >
                             </div>
                             <div class="col-lg-4">
                                 <label>生年月日:</label>
@@ -100,13 +100,12 @@
                             <div class="col-lg-4">
                                 <label>口座種別:</label>
                                 <input type="text" name="account_type"  value = "<?= isset($talent)?$talent['account_type']:'' ?>" class="form-control" >
-                                    
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg-4">
                                 <label>都道府県:</label>
-                                <input type="email" name="pertecture"  value = "<?= isset($talent)?$talent['pertecture']:'' ?>" class="form-control">
+                                <input type="text" name="pertecture"  value = "<?= isset($talent)?$talent['pertecture']:'' ?>" class="form-control">
                             </div>
                             <div class="col-lg-4">
                                 <label>市区町村・番地:</label>
@@ -120,7 +119,7 @@
                         <div class="form-group row">
                             <div class="col-lg-4">
                                 <label>フォロワー数:</label>
-                                <input type="email" name="fw_count"  value = "<?= isset($talent)?$talent['fw_count']:'' ?>" class="form-control">
+                                <input type="number" name="fw_count"  value = "<?= isset($talent)?$talent['fw_count']:'' ?>" class="form-control">
                             </div>
                             <div class="col-lg-4">
                                 <label>InstagramプロフィールURL:</label>
@@ -128,69 +127,103 @@
                             </div>
                             <div class="col-lg-4">
                                 <label>依頼金額:</label>
-                                <input type="text" name="request_amount"  value = "<?= isset($talent)?$talent['request_amount']:'' ?>" class="form-control">
+                                <input type="number" name="request_amount"  value = "<?= isset($talent)?$talent['request_amount']:'' ?>" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg-4">
                                 <label>担当者名:</label>
-                                <input type="email" name="other_name"  value = "<?= isset($talent)?$talent['other_name']:'' ?>" class="form-control">
+                                <input type="text" name="other_name"  value = "<?= isset($talent)?$talent['other_name']:'' ?>" class="form-control">
                             </div>
                             <div class="col-lg-4">
-                                <label>注意:</label>
-                                <input type="text" name="note"  value = "<?= isset($talent)?$talent['note']:'' ?>" class="form-control">
+                                <label>口座番号:</label>
+                                <input type="number" name="account_number"  value = "<?= isset($talent)?$talent['account_number']:'' ?>" class="form-control">
                             </div>
                             <div class="col-lg-4">
                                 <label>IGfw男性比率:</label>
-                                <input type="text" name="igfw_male_ratio"  value = "<?= isset($talent)?$talent['igfw_male_ratio']:'' ?>" class="form-control">
+                                <input type="number" name="igfw_male_ratio"  value = "<?= isset($talent)?$talent['igfw_male_ratio']:'' ?>" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg-4">
                                 <label>IGfw女性比率:</label>
-                                <input type="email" name="igfw_female_ratio"  value = "<?= isset($talent)?$talent['igfw_female_ratio']:'' ?>" class="form-control">
+                                <input type="number" name="igfw_female_ratio"  value = "<?= isset($talent)?$talent['igfw_female_ratio']:'' ?>" class="form-control">
                             </div>
                             <div class="col-lg-4">
                                 <label>年齢:</label>
-                                <input type="text" name="age"  value = "<?= isset($talent)?$talent['age']:'' ?>" class="form-control">
+                                <input type="number" name="age"  value = "<?= isset($talent)?$talent['age']:'' ?>" class="form-control">
                             </div>
+                            <!--  select tag -->
                             <div class="col-lg-4">
                                 <label>活動拠点:</label>
-                                <input type="text" name="activity_base"  value = "<?= isset($talent)?$talent['activity_base']:'' ?>" class="form-control">
+                                 <select class="form-control select2" id="kt_select2_4" name="activity_base" multiple="multiple">
+                                    <option value="CA">California</option>
+                                    <option value="NV" selected="selected">Nevada</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="WA">Washington</option>
+                                    <option value="AZ">Arizona</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="MT" selected="selected">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="WY">Wyoming</option>
+                                </select>
+                                <!-- <input type="text" name="activity_base"  value = "<?= isset($talent)?$talent['activity_base']:'' ?>" class="form-control"> -->
                             </div>
                         </div>
                         <div class="form-group row">
+                            <!-- select tag -->
                             <div class="col-lg-4">
                                 <label>ご職業:</label>
-                                <input type="email" name="talent"  value = "<?= isset($talent)?$talent['talent']:'' ?>" class="form-control">
+                                <select class="form-control select2" id="kt_select2_3" name="talent" multiple="multiple">
+                                    <option value="CA">California</option>
+                                    <option value="NV" selected="selected">Nevada</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="WA">Washington</option>
+                                    <option value="AZ">Arizona</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="MT" selected="selected">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="WY">Wyoming</option>
+                                </select>
+                                <!-- <input type="text" name="talent"  value = "<?= isset($talent)?$talent['talent']:'' ?>" class="form-control"> -->
                             </div>
                             <div class="col-lg-4">
                                 <label>投稿ジャンル:</label>
                                 <input type="text" name="post_genre"  value = "<?= isset($talent)?$talent['post_genre']:'' ?>" class="form-control">
                             </div>
                             <div class="col-lg-4">
-                                <label>獲得実績:</label>
-                                <input type="text" name="acq_record"  value = "<?= isset($talent)?$talent['acq_record']:'' ?>" class="form-control">
+                                <label>LINE ID:</label>
+                                <input type="text" name="line_id"  value = "<?= isset($talent)?$talent['line_id']:'' ?>" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg-4">
                                 <label>PRポイント:</label>
-                                <input type="email" name="pr_point"  value = "<?= isset($talent)?$talent['pr_point']:'' ?>" class="form-control">
+                                <input type="number" name="pr_point"  value = "<?= isset($talent)?$talent['pr_point']:'' ?>" class="form-control">
                             </div>
+
                             <div class="col-lg-4">
-                                <label>性別:</label>
-                                <input type="text" name="gender"  value = "<?= isset($talent)?$talent['gender']:'' ?>" class="form-control">
+                                <label>プロフィール表示名:</label>
+                                <input type="text" name="profile_name"  value = "<?= isset($talent)?$talent['profile_name']:'' ?>"  class="form-control" >
                             </div>
+                            
                             <div class="col-lg-4">
                                 <label>平均EG率(%):</label>
-                                <input type="text" name="fg_rate"  value = "<?= isset($talent)?$talent['fg_rate']:'' ?>" class="form-control" >
+                                <input type="number" name="fg_rate"  value = "<?= isset($talent)?$talent['fg_rate']:'' ?>" class="form-control" >
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg-4">
                                 <label>投稿での顔出し:</label>
-                                <input type="email" name="app_post"  value = "<?= isset($talent)?$talent['app_post']:'' ?>" class="form-control">
+                                <input type="text" name="app_post"  value = "<?= isset($talent)?$talent['app_post']:'' ?>" class="form-control">
                             </div>
                             <div class="col-lg-4">
                                 <label>所属:</label>
@@ -204,7 +237,7 @@
                         <div class="form-group row">
                             <div class="col-lg-4">
                                 <label>twitterフォロワー:</label>
-                                <input type="email" name="tw_fw"  value = "<?= isset($talent)?$talent['tw_fw']:'' ?>" class="form-control">
+                                <input type="number" name="tw_fw"  value = "<?= isset($talent)?$talent['tw_fw']:'' ?>" class="form-control">
                             </div>
                             <div class="col-lg-4">
                                 <label>Twitterアカウント URL:</label>
@@ -212,17 +245,17 @@
                             </div>
                             <div class="col-lg-4">
                                 <label>FBfw:</label>
-                                <input type="text" name="fb_fw"  value = "<?= isset($talent)?$talent['fb_fw']:'' ?>" class="form-control" >
+                                <input type="number" name="fb_fw"  value = "<?= isset($talent)?$talent['fb_fw']:'' ?>" class="form-control" >
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg-4">
                                 <label>Facebookアカウント URL:</label>
-                                <input type="email" name="fb_url"  value = "<?= isset($talent)?$talent['fb_url']:'' ?>" class="form-control">
+                                <input type="text" name="fb_url"  value = "<?= isset($talent)?$talent['fb_url']:'' ?>" class="form-control">
                             </div>
                             <div class="col-lg-4">
                                 <label>youtube登録者数:</label>
-                                <input type="text" name="yt_registrant"  value = "<?= isset($talent)?$talent['yt_registrant']:'' ?>" class="form-control">
+                                <input type="number" name="yt_registrant"  value = "<?= isset($talent)?$talent['yt_registrant']:'' ?>" class="form-control">
                             </div>
                             <div class="col-lg-4">
                                 <label>YouTubeチャンネル URL:</label>
@@ -231,21 +264,22 @@
                         </div><div class="form-group row">
                             <div class="col-lg-4">
                                 <label>女性比率:</label>
-                                <input type="email" name="female_ratio"  value = "<?= isset($talent)?$talent['female_ratio']:'' ?>" class="form-control">
+                                <input type="number" name="female_ratio"  value = "<?= isset($talent)?$talent['female_ratio']:'' ?>" class="form-control">
                             </div>
                             <div class="col-lg-4">
                                 <label>男性比率:</label>
-                                <input type="text" name="male_ratio"  value = "<?= isset($talent)?$talent['male_ratio']:'' ?>" class="form-control">
+                                <input type="number" name="male_ratio"  value = "<?= isset($talent)?$talent['male_ratio']:'' ?>" class="form-control">
                             </div>
+                            <!-- select option -->
                             <div class="col-lg-4">
-                                <label>age range:</label>
+                                <label>年齢層:</label>
                                 <input type="text" name="age_range"  value = "<?= isset($talent)?$talent['age_range']:'' ?>" class="form-control" >
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-lg-4">
                                 <label>TikTokfw数:</label>
-                                <input type="email" name="tt_count"  value = "<?= isset($talent)?$talent['tt_count']:'' ?>" class="form-control">
+                                <input type="number" name="tt_fw"  value = "<?= isset($talent)?$talent['tt_fw']:'' ?>" class="form-control">
                             </div>
                             <div class="col-lg-4">
                                 <label>TikTokアカウント URL:</label>
@@ -259,11 +293,11 @@
                         <div class="form-group row">
                             <div class="col-lg-4">
                                 <label>Blogfw数:</label>
-                                <input type="email" name="blog_fw_count"  value = "<?= isset($talent)?$talent['blog_fw_count']:'' ?>" class="form-control">
+                                <input type="number" name="blog_fw_count"  value = "<?= isset($talent)?$talent['blog_fw_count']:'' ?>" class="form-control">
                             </div>
                             <div class="col-lg-4">
                                 <label>wearfw数:</label>
-                                <input type="text" name="wear_fw_count"  value = "<?= isset($talent)?$talent['wear_fw_count']:'' ?>" class="form-control">
+                                <input type="number" name="wear_fw_count"  value = "<?= isset($talent)?$talent['wear_fw_count']:'' ?>" class="form-control">
                             </div>
                             <div class="col-lg-4">
                                 <label>wearURL:</label>
@@ -285,13 +319,17 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-lg-4">
-                                <label>口座番号:</label>
-                                <input type="text" name="account_number"  value = "<?= isset($talent)?$talent['account_number']:'' ?>" class="form-control">
+                            <!-- text editor -->
+                            <div class="col-lg-6">
+                                <label>注意:</label>
+                                <!-- <input type="text" name="note"  value = "<?= isset($talent)?$talent['note']:'' ?>" class="form-control"> -->
+                                <textarea name="note" id="kt-ckeditor-1" rows="10" style="width: 100%;"> <?= isset($talent)?$talent['note']:'' ?></textarea>
                             </div>
-                            <div class="col-lg-4">
-                                <label>LINE ID:</label>
-                                <input type="text" name="line_id"  value = "<?= isset($talent)?$talent['line_id']:'' ?>" class="form-control">
+                            <!-- text editor -->
+                            <div class="col-lg-6">
+                                <label>獲得実績:</label>
+                                <textarea name="acq_record" id="kt-ckeditor-2" rows="10" style="width: 100%;"> <?= isset($talent)?$talent['acq_record']:'' ?> </textarea>
+                                <!-- <input type="text" name="acq_record"  value = "<?= isset($talent)?$talent['acq_record']:'' ?>" class="form-control"> -->
                             </div>
                         </div>
                     </div>
@@ -310,9 +348,9 @@
         </div>
     </div>
 </div>
-<!--end::Modal-->
+<script src="<?= asset_url()?>plugins/custom/ckeditor/ckeditor-classic.bundle.js"></script>
 <script src="<?= asset_url()?>scripts/edit.js"></script>
-<script src="assets/js/pages/crud/file-upload/image-input.js"></script>
+<script src="<?= asset_url()?>js/pages/crud/file-upload/image-input.js"></script>
 <script>
     var HOST_URL = '<?= base_url()?>';
 </script>

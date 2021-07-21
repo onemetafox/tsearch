@@ -105,17 +105,15 @@ var KTDatatableRemoteAjaxDemo = function() {
             //     title: '生年月日'
             // }
             , {
-                field: 'acticity_base',
-                title: '活動拠点'
-            }, {
                 field: 'note',
                 title: '注意',
+                width: 350,
                 autoHide: false
             }, {
                 field: 'Actions',
                 title: '編 集',
                 sortable: false,
-                width: 240,
+                width: 40,
                 overflow: 'visible',
                 autoHide: false,
                 template: function(row) {

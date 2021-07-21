@@ -290,7 +290,7 @@
                                 <div class="form-group row">
                                     <div class="col-lg-4">
                                         <label>TikTokfw数:</label>
-                                        <input type="email" name="tt_count"  value = "<?= isset($talent)?$talent['tt_count']:'' ?>" class="form-control">
+                                        <input type="email" name="tt_fw"  value = "<?= isset($talent)?$talent['tt_fw']:'' ?>" class="form-control">
                                     </div>
                                     <div class="col-lg-4">
                                         <label>TikTokアカウント URL:</label>

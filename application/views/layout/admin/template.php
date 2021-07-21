@@ -16,7 +16,7 @@
         <link href="<?=asset_url()?>css/themes/layout/brand/light.css" rel="stylesheet" type="text/css" />
         <link href="<?=asset_url()?>css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
         <script src="<?=asset_url()?>js/jquery.js"></script>
-        <link rel="shortcut icon" href="<?=asset_url()?>media/logos/favicon.ico" />
+        <link rel="shortcut icon" href="<?=asset_url()?>img/favicon.ico" />
     </head>
     <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed page-loading">
         <div class="d-flex flex-column flex-root">
